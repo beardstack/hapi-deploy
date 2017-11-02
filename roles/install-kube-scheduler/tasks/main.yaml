@@ -10,5 +10,5 @@
    src: "{{ config.directory }}/bin/kube-scheduler"
    dest: /usr/local/bin/
    mode: 0700
-  when: not kube-scheduler.stat.exists
+  when: not kube_scheduler_binary.stat.exists
 
