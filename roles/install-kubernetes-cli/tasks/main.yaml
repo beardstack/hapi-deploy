@@ -1,5 +1,0 @@
-- name: make sure kubectl is installed
-  homebrew:
-    name: kubernetes-cli
-    state: present
-    update_homebrew: yes
