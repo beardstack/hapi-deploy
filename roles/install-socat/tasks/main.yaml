@@ -1,6 +1,7 @@
-- name: install binary
+- name: install socat (needed for kube-proxy)
   become: yes
-  apt:
-    name: socat
-    update_cache: yes
-    cache_valid_time: 3600
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - socat
