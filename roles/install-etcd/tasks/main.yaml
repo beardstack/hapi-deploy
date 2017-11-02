@@ -65,10 +65,10 @@
     src: "{{ config.directory }}/services/etcd.{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}.service"
     dest: "/etc/systemd/system/etcd.service"
 
-- name: reload the system daemon
-  become: yes
-  systemd:
-    daemon_reload: yes
+# - name: reload the system daemon
+  # become: yes
+  # systemd:
+    
 
 - name: install the etcd service
   become: yes
@@ -76,6 +76,7 @@
     name: etcd
     state: started
     enabled: yes
+    daemon_reload: yes
   when: service_etcd_status | failed
 
 - name: restart the etcd service
