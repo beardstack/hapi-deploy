@@ -8,6 +8,8 @@
   rpm_key:
     state: present
     key: https://download.docker.com/linux/centos/gpg
+    validate_certs: no
+    
   
 - name: Download Docker CE repository conf
   get_url:
