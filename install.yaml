@@ -54,6 +54,7 @@
 
 - hosts: localhost
   roles:
+  - install-kubectl
   - install-admin-kubeconfig
   - run-spec-romana
   - run-spec-dns

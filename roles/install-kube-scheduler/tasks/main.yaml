@@ -4,16 +4,11 @@
     path: /usr/local/bin/kube-scheduler
   register: kube_scheduler_binary
 
-- name: download and extract
+- name: download kube-scheduler from provisioner and make sure it's executable
   become: yes
-  get_url:
-    url: "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kube-scheduler"
-    dest: /usr/local/bin/
-  when: not kube_scheduler_binary.stat.exists
+  copy:
+   src: "{{ config.directory }}/bin/kube-scheduler"
+   dest: /usr/local/bin/
+   mode: 0700
+  when: not kube-scheduler.stat.exists
 
-- name: make sure it's executable
-  become: yes
-  file:
-    path: /usr/local/bin/kube-scheduler
-    mode: "u+rwx"
-  when: not kube_scheduler_binary.stat.exists

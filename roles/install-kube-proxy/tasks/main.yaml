@@ -3,17 +3,11 @@
   stat:
     path: /usr/local/bin/kube-proxy
   register: kube_proxy_binary
-
-- name: download and extract
+  
+- name: download kube-proxy from provisioner and make sure it's executable
   become: yes
-  get_url:
-    url: "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kube-proxy"
-    dest: /usr/local/bin/
-  when: not kube_proxy_binary.stat.exists
-
-- name: make sure it's executable
-  become: yes
-  file:
-    path: /usr/local/bin/kube-proxy
-    mode: "u+rwx"
+  copy:
+   src: "{{ config.directory }}/bin/kube-proxy"
+   dest: /usr/local/bin/
+   mode: 0700
   when: not kube_proxy_binary.stat.exists

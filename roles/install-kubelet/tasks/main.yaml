@@ -4,10 +4,10 @@
     path: /usr/local/bin/kubelet
   register: kubelet_binary
 
- - name: download kubelet from provisioner
-   become: yes
-   copy:
-    src:{{ config.directory }}/bin/kubelet
-    dest: /usr/local/bin/
-    mode: 0700
-   when: not kubelet_binary.stat.exists
+- name: download kubelet from provisioner and make sure it's executable
+  become: yes
+  copy:
+   src: "{{ config.directory }}/bin/kubelet"
+   dest: /usr/local/bin/
+   mode: 0700
+  when: not kubelet_binary.stat.exists

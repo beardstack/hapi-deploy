@@ -3,17 +3,11 @@
   stat:
     path: /usr/local/bin/kube-controller-manager
   register: kube_controller_manager_binary
-
-- name: download and extract
+  
+- name: download kube-controller-manager from provisioner and make sure it's executable
   become: yes
-  get_url:
-    url: "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kube-controller-manager"
-    dest: /usr/local/bin/
-  when: not kube_controller_manager_binary.stat.exists
-
-- name: make sure it's executable
-  become: yes
-  file:
-    path: /usr/local/bin/kube-controller-manager
-    mode: "u+rwx"
+  copy:
+   src: "{{ config.directory }}/bin/kube-controller-manager"
+   dest: /usr/local/bin/
+   mode: 0700
   when: not kube_controller_manager_binary.stat.exists

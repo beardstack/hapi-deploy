@@ -2,8 +2,9 @@
   roles:
   # preparation
   - install-cfssl
-  - install-kubernetes-cli
   - setup-config-directory
+  - download-binaries
+  - install-kubectl
 
   # certificates
   - provision-certificates-ca

@@ -1,4 +1,4 @@
-- name: download and extract
+- name: DL kubernetes binaries
   become: yes
   get_url:
     url: "{{item }}"
