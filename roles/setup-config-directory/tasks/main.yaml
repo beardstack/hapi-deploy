@@ -11,3 +11,4 @@
   - "{{ config.directory }}/k8s/kubeconfigs"
   - "{{ config.directory }}/k8s/specs"
   - "{{ config.directory }}/services"
+  - "{{ config.directory }}/bin"

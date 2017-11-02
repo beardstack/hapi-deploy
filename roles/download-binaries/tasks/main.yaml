@@ -1,0 +1,16 @@
+- name: download and extract
+  become: yes
+  get_url:
+    url: "{{item }}"
+    dest: "{{ config.directory }}/bin/"
+    use_proxy: yes
+    validate_certs: no
+  with_items:
+  - "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kubectl"
+  - "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kube-apiserver"
+  - "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kube-controller-manager"
+  - "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kube-proxy"
+  - "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kube-scheduler"
+  - "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kubelet"
+
+
