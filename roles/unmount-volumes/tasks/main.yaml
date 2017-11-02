@@ -1,0 +1,9 @@
+- name: Find if mounts exists
+  shell: mount -l | grep pods
+  ignore_errors: true
+  register: result
+  
+- name: Unmount pod volumes
+  become: yes
+  shell : umount $(mount -l | grep pods | cut -d' ' -f3)
+  when: result.stdout != ""

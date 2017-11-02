@@ -10,6 +10,8 @@
 
   # stop docker before trying to remove directories that could be in use by containers
   - stop-and-remove-docker-containers
+  
+  - unmount-volumes
 
   # remove files that were transferred (certs, kubeconfigs, specs)
   - cleanup-directories
@@ -32,7 +34,9 @@
 
   # stop docker before trying to remove directories that could be in use by containers
   - stop-and-remove-docker-containers
-
+  
+  
+  - unmount-volumes
   # remove files that were transferred (certs, kubeconfigs, specs)
   - cleanup-directories
 
