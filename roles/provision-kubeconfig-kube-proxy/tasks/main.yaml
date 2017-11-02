@@ -1,0 +1,9 @@
+- name: generate the kubeconfig
+  shell: "{{ item }}"
+  args:
+    chdir: "{{ config.directory }}/k8s/kubeconfigs"
+  with_items:
+  - "kubectl config set-cluster {{ kubernetes.cluster.name }} --certificate-authority=../../certs/outputs/ca.pem --embed-certs=true --server=https://{{ kubernetes.accessIP }}:6443 --kubeconfig=./kube-proxy.kubeconfig"
+  - "kubectl config set-credentials kube-proxy --client-certificate=../../certs/outputs/kube-proxy.pem --client-key=../../certs/outputs/kube-proxy-key.pem --embed-certs=true --kubeconfig=./kube-proxy.kubeconfig"
+  - "kubectl config set-context default --cluster={{ kubernetes.cluster.name }} --user=kube-proxy --kubeconfig=./kube-proxy.kubeconfig"
+  - "kubectl config use-context default --kubeconfig=./kube-proxy.kubeconfig"

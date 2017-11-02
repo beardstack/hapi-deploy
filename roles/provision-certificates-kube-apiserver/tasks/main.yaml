@@ -1,0 +1,19 @@
+- name: generate the configurations
+  template:
+    src: kube-api.csr.json.j2
+    dest: "{{ config.directory }}/certs/configs/kube-api.csr.json"
+
+- name: setup a variable containing addiitional hosts for the kube api cert
+  set_fact:
+    kube_api_additional_hosts:
+    - "{{ kubernetes.cluster.dns }}"
+    - "{{ kubernetes.accessIP }}"
+    - "{{ kubernetes.cluster.serviceIP }}"
+    - "127.0.0.1"
+    - "kubernetes.default"
+
+- name: generate the kube-api cert
+  shell: "cfssl gencert -ca=./ca.pem -ca-key=./ca-key.pem -config=../configs/config.json -hostname={{ item }} -profile=kubernetes ../configs/kube-api.csr.json | cfssljson -bare kube-api"
+  args:
+    chdir: "{{ config.directory }}/certs/outputs"
+  with_items: "{{ (groups['etcd-nodes'] + kube_api_additional_hosts) | unique | join(',') }}"

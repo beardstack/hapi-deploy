@@ -1,0 +1,4 @@
+- name: generate the dns spec
+  template:
+    src: kube-dns.yaml.j2
+    dest: "{{ config.directory }}/k8s/specs/kube-dns.yaml"

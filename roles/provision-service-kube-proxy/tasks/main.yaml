@@ -1,0 +1,4 @@
+- name: create a kube-proxy service
+  template:
+    src: kube-proxy.service.j2
+    dest: "{{ config.directory }}/services/kube-proxy.service"

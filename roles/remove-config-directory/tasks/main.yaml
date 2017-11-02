@@ -1,0 +1,4 @@
+- name: remove the config directory
+  file:
+    path: "{{ config.directory }}"
+    state: absent

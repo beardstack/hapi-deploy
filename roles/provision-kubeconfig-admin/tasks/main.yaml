@@ -1,0 +1,9 @@
+- name: generate the kubeconfig
+  shell: "{{ item }}"
+  args:
+    chdir: "{{ config.directory }}/k8s/kubeconfigs"
+  with_items:
+  - "kubectl config set-cluster {{ kubernetes.cluster.name }} --certificate-authority=../../certs/outputs/ca.pem --embed-certs=true --server=https://{{ kubernetes.accessIP }}:6443 --kubeconfig=./admin.kubeconfig"
+  - "kubectl config set-credentials admin --client-certificate=../../certs/outputs/admin.pem --client-key=../../certs/outputs/admin-key.pem --embed-certs=true --kubeconfig=./admin.kubeconfig"
+  - "kubectl config set-context default --cluster={{ kubernetes.cluster.name }} --user=admin --kubeconfig=./admin.kubeconfig"
+  - "kubectl config use-context default --kubeconfig=./admin.kubeconfig"

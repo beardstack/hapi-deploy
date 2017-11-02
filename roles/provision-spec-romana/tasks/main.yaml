@@ -1,0 +1,9 @@
+- name: generate the network configuration
+  template:
+    src: network.json.j2
+    dest: "{{ config.directory }}/k8s/romana-network.json"
+
+- name: generate the romana spec
+  template:
+    src: romana.yaml.j2
+    dest: "{{ config.directory }}/k8s/specs/romana.yaml"

@@ -1,0 +1,7 @@
+- name: generate the dns spec
+  template:
+    src: "{{ item }}.yaml.j2"
+    dest: "{{ config.directory }}/k8s/specs/{{ item }}.yaml"
+  with_items:
+  - influxdb
+  - heapster

@@ -1,0 +1,44 @@
+- hosts: kubernetes-nodes
+  roles:
+  # stop running services
+  - remove-services-from-nodes
+
+  # uninstall kube binaries
+  - uninstall-kubelet
+  - uninstall-kube-proxy
+  - uninstall-kubectl
+
+  # stop docker before trying to remove directories that could be in use by containers
+  - stop-and-remove-docker-containers
+
+  # remove files that were transferred (certs, kubeconfigs, specs)
+  - cleanup-directories
+
+  # remove additional binaries
+  - uninstall-docker
+
+- hosts: kubernetes-masters
+  roles:
+  # stop running services
+  - remove-services-from-master
+
+  # uninstall kube binaries
+  - uninstall-kubelet
+  - uninstall-kube-proxy
+  - uninstall-kube-scheduler
+  - uninstall-kube-controller-manager
+  - uninstall-kube-apiserver
+  - uninstall-kubectl
+
+  # stop docker before trying to remove directories that could be in use by containers
+  - stop-and-remove-docker-containers
+
+  # remove files that were transferred (certs, kubeconfigs, specs)
+  - cleanup-directories
+
+  # remove additional binaries
+  - uninstall-docker
+
+- hosts: etcd-nodes
+  roles:
+  - uninstall-etcd

@@ -1,0 +1,30 @@
+- name: check to see if etcd exists
+  stat:
+    path: /etc/systemd/system/etcd.service
+  register: etcd
+
+- name: stop the running services
+  become: yes
+  service:
+    name: etcd
+    state: stopped
+    enabled: no
+  when: etcd.stat.exists
+
+- name: reload the system daemon
+  become: yes
+  systemd:
+    daemon_reload: yes
+  when: etcd.stat.exists
+
+- name: remove directories created during the installation
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+  - /usr/local/bin/etcd
+  - /usr/local/bin/etcdctl
+  - /etc/etcd
+  - /etc/systemd/system/etcd.service
+  - "{{ kubernetes.etcd.database.path }}"

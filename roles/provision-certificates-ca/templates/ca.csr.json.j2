@@ -1,0 +1,16 @@
+{
+  "CN": "Kubernetes",
+  "key": {
+    "algo": "{{ certificates.encryption.algorithm }}",
+    "size": {{ certificates.encryption.size }}
+  },
+  "names": [
+    {
+      "C": "{{ certificates.country.code }}",
+      "L": "{{ certificates.city }}",
+      "O": "Kubernetes",
+      "OU": "{{ certificates.state.code }}",
+      "ST": "{{ certificates.state.full }}"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+- name: check to see if the cni directory exists
+  become: yes
+  stat:
+    path: /opt/cni/bin/
+  register: cni_plugins
+
+- name: make sure the cni directory exists
+  become: yes
+  file:
+    path: /opt/cni/bin/
+    state: directory
+  when: not cni_plugins.stat.exists
+
+- name: download the cni plugins and install
+  become: yes
+  unarchive:
+    src: "https://github.com/containernetworking/plugins/releases/download/v{{ kubernetes.cni.version }}/cni-plugins-amd64-v{{ kubernetes.cni.version }}.tgz"
+    dest: "/opt/cni/bin/"
+    copy: no
+  when: not cni_plugins.stat.exists

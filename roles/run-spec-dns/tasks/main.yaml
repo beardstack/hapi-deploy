@@ -1,0 +1,2 @@
+- name: install kube-dns
+  shell: "kubectl apply -f {{ config.directory }}/k8s/specs/kube-dns.yaml"

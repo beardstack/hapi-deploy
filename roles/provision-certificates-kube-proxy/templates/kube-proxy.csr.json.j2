@@ -1,0 +1,16 @@
+{
+  "CN": "system:kube-proxy",
+  "key": {
+    "algo": "{{ certificates.encryption.algorithm }}",
+    "size": {{ certificates.encryption.size }}
+  },
+  "names": [
+    {
+      "C": "{{ certificates.country.code }}",
+      "L": "{{ certificates.city }}",
+      "O": "system:node-proxier",
+      "OU": "{{ certificates.state.code }}",
+      "ST": "{{ certificates.state.full }}"
+    }
+  ]
+}

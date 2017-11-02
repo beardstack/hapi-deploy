@@ -1,0 +1,19 @@
+- name: check to see if the kubectl binary exists
+  become: yes
+  stat:
+    path: /usr/local/bin/kubectl
+  register: kubectl_binary
+
+- name: download and extract
+  become: yes
+  get_url:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kubectl"
+    dest: /usr/local/bin/
+  when: not kubectl_binary.stat.exists
+
+- name: make sure it's executable
+  become: yes
+  file:
+    path: /usr/local/bin/kubectl
+    mode: "u+rwx"
+  when: not kubectl_binary.stat.exists

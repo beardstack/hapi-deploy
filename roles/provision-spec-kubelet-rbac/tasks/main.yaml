@@ -1,0 +1,4 @@
+- name: generate the spec files for kubelet to access the api server
+  template:
+    src: kubelet.rbac.yaml.j2
+    dest: "{{ config.directory }}/k8s/specs/kubelet.rbac.yaml"

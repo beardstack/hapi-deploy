@@ -1,0 +1,47 @@
+############################### kube-proxy ###############################
+
+- name: check to see if kube-proxy is running
+  become: yes
+  stat:
+    path: /etc/systemd/system/kube-proxy.service
+  register: kube_proxy
+
+- name: disable the kube-proxy
+  become: yes
+  service:
+    name: kube-proxy
+    state: stopped
+    enabled: no
+  when: kube_proxy.stat.exists
+
+############################### kubelet ###############################
+
+- name: check to see if kubelet is running
+  become: yes
+  stat:
+    path: /etc/systemd/system/kubelet.service
+  register: kubelet
+
+- name: disable the kubelet
+  become: yes
+  service:
+    name: kubelet
+    state: stopped
+    enabled: no
+  when: kubelet.stat.exists
+
+############################### cleanup ###############################
+
+- name: remove all of the services
+  become: yes
+  file:
+    path: "/etc/systemd/system/{{ item }}.service"
+    state: absent
+  with_items:
+  - kube-proxy
+  - kubelet
+
+- name: reload the system daemon
+  become: yes
+  systemd:
+    daemon_reload: yes

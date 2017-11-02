@@ -1,0 +1,5 @@
+- name: create an kubelet service file for each k8s node
+  template:
+    src: kubelet.service.j2
+    dest: "{{ config.directory }}/services/kubelet.node.{{ item.1 }}.service"
+  with_indexed_items: "{{ groups['kubernetes-nodes'] }}"

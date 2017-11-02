@@ -1,0 +1,4 @@
+- name: make sure cfssl is installed
+  homebrew:
+    name: cfssl
+    state: present

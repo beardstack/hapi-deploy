@@ -1,0 +1,13 @@
+- name: create an array containing all of the etcd hosts
+  set_fact: etcd_host="etcd{{ item.0 + 1 }}=https://{{ item.1 }}:2380"
+  with_indexed_items: "{{ groups['etcd-nodes'] }}"
+  register: etcd_hosts
+
+- name: concatenate our etcd hosts into a csv
+  set_fact: etcd_hosts_csv="{{ etcd_hosts.results | map(attribute='ansible_facts.etcd_host') | list | join(',') }}"
+
+- name: create an etcd service file for each etcd node
+  template:
+    src: etcd.service.j2
+    dest: "{{ config.directory }}/services/etcd.{{ item.1 }}.service"
+  with_indexed_items: "{{ groups['etcd-nodes'] }}"

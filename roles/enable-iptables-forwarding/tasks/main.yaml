@@ -1,0 +1,6 @@
+- name: install a cron that will periodically ensure that forwarding is turned on in the iptables
+  become: yes
+  cron:
+    name: "enable iptables forwarding"
+    minute: "*/1"
+    job: "iptables -P FORWARD ACCEPT"

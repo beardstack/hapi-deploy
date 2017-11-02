@@ -1,0 +1,16 @@
+- name: make sure any directories that were created do not exist
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+  - /var/lib/kubernetes
+  - /var/lib/kubelet
+  - /var/lib/kube-proxy
+  - /opt/cni/bin/
+  - /var/run/romana
+  - /var/lib/romana/
+  - /etc/romana
+  - /etc/cni/net.d
+  - "{{ kubernetes.rook.hostConfigPath }}"
+  - "{{ kubernetes.rook.hostStoragePath }}"

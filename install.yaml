@@ -1,0 +1,57 @@
+- hosts: etcd-nodes
+  roles:
+  - install-etcd
+
+- hosts: kubernetes-masters
+  roles:
+  # preparation
+  - install-docker
+  - install-socat
+  - install-cni-plugins
+  - copy-certs-to-master
+  - copy-kubeconfigs-to-master
+  - copy-specs-to-master
+
+  # kube components
+  - install-kubectl
+  - install-kube-apiserver
+  - install-kube-controller-manager
+  - install-kube-scheduler
+  - install-kube-proxy
+  - install-kubelet
+
+  # activate everything
+  - activate-services-on-master
+  - run-spec-kubelet-rbac
+
+  # enable forwarding (until romana patch comes out)
+  - enable-iptables-forwarding
+
+- hosts: kubernetes-nodes
+  roles:
+  # preparation
+  - install-docker
+  - install-socat
+  - install-cni-plugins
+  - copy-certs-to-node
+  - copy-kubeconfigs-to-node
+
+  # kube components
+  - install-kubectl
+  - install-kube-proxy
+  - install-kubelet
+
+  # activate everything
+  - activate-services-on-node
+
+  # enable forwarding (until romana patch comes out)
+  - enable-iptables-forwarding
+
+- hosts: localhost
+  roles:
+  - install-admin-kubeconfig
+  - run-spec-romana
+  - run-spec-dns
+  - run-spec-heapster
+  - run-spec-dashboard
+  - run-spec-rook

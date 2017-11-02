@@ -1,0 +1,5 @@
+- name: install
+  shell: "kubectl apply -f {{ config.directory }}/k8s/specs/{{ item }}.yaml"
+  with_items:
+  - influxdb
+  - heapster

@@ -1,0 +1,9 @@
+- name: make sure the ~/.kube directory exists
+  file:
+    path: ~/.kube
+    state: directory
+
+- name: install the kubeconfig
+  copy:
+    src: "{{ config.directory }}/k8s/kubeconfigs/admin.kubeconfig"
+    dest: ~/.kube/config

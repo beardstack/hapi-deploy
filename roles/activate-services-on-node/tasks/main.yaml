@@ -1,0 +1,30 @@
+- name: copy this hosts kubelet service file
+  become: yes
+  copy:
+    src: "{{ config.directory }}/services/kubelet.node.{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}.service"
+    dest: "/etc/systemd/system/kubelet.service"
+
+- name: copy the kube-proxy service into place
+  become: yes
+  copy:
+    src: "{{ config.directory }}/services/kube-proxy.service"
+    dest: /etc/systemd/system/kube-proxy.service
+
+- name: reload the system daemon
+  become: yes
+  systemd:
+    daemon_reload: yes
+
+- name: enable and start all of the services
+  become: yes
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+  - kubelet
+  - kube-proxy
+
+- name: wait for services to boot fully before continuing
+  pause:
+    seconds: 10

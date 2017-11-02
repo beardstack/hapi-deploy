@@ -1,0 +1,20 @@
+- name: make sure any directories exist
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+  - /var/lib/kubelet
+  - /var/lib/kube-proxy
+
+- name: copy the kube-proxy configuration into place
+  become: yes
+  copy:
+    src: "{{ config.directory }}/k8s/kubeconfigs/kube-proxy.kubeconfig"
+    dest: /var/lib/kube-proxy/kubeconfig
+
+- name: copy this hosts kubelet configuration into place
+  become: yes
+  copy:
+    src: "{{ config.directory }}/k8s/kubeconfigs/kubelet.master.{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}.kubeconfig"
+    dest: /var/lib/kubelet/kubeconfig

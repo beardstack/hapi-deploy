@@ -1,0 +1,16 @@
+{
+  "CN": "system:node:node{{ item.0 + 1 }}",
+  "key": {
+    "algo": "{{ certificates.encryption.algorithm }}",
+    "size": {{ certificates.encryption.size }}
+  },
+  "names": [
+    {
+      "C": "{{ certificates.country.code }}",
+      "L": "{{ certificates.city }}",
+      "O": "system:nodes",
+      "OU": "{{ certificates.state.code }}",
+      "ST": "{{ certificates.state.full }}"
+    }
+  ]
+}

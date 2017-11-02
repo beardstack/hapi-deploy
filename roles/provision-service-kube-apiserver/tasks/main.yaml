@@ -1,0 +1,13 @@
+- name: create an array containing all of the etcd hosts
+  set_fact: etcd_host="https://{{ item.1 }}:2379"
+  with_indexed_items: "{{ groups['etcd-nodes'] }}"
+  register: etcd_hosts
+
+- name: concatenate our etcd hosts into a csv
+  set_fact: etcd_hosts_csv="{{ etcd_hosts.results | map(attribute='ansible_facts.etcd_host') | list | join(',') }}"
+
+- name: create a kube-apiserver service file for each kubernetes master
+  template:
+    src: kube-apiserver.service.j2
+    dest: "{{ config.directory }}/services/kube-apiserver.{{ item.1 }}.service"
+  with_indexed_items: "{{ groups['kubernetes-masters'] }}"

@@ -1,0 +1,9 @@
+- name: generate the configurations
+  template:
+    src: admin.csr.json.j2
+    dest: "{{ config.directory }}/certs/configs/admin.csr.json"
+
+- name: generate the admin cert
+  shell: "cfssl gencert -ca=./ca.pem -ca-key=./ca-key.pem -config=../configs/config.json -profile=kubernetes ../configs/admin.csr.json | cfssljson -bare admin"
+  args:
+    chdir: "{{ config.directory }}/certs/outputs"

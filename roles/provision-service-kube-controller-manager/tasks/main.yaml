@@ -1,0 +1,4 @@
+- name: create a kube-controller-manager service
+  template:
+    src: kube-controller-manager.service.j2
+    dest: "{{ config.directory }}/services/kube-controller-manager.service"

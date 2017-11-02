@@ -1,0 +1,23 @@
+- name: set the cluster for each kubelet master
+  shell: "kubectl config set-cluster {{ kubernetes.cluster.name }} --certificate-authority=../../certs/outputs/ca.pem --embed-certs=true --server=https://{{ kubernetes.accessIP }}:6443 --kubeconfig=./kubelet.master.{{ item.1 }}.kubeconfig"
+  args:
+    chdir: "{{ config.directory }}/k8s/kubeconfigs"
+  with_indexed_items: "{{ groups['kubernetes-masters'] }}"
+
+- name: set the credentials for each kubelet master
+  shell: "kubectl config set-credentials system:node:master{{ item.0 + 1 }} --client-certificate=../../certs/outputs/kubelet.master.{{ item.1 }}.pem --client-key=../../certs/outputs/kubelet.master.{{ item.1 }}-key.pem --embed-certs=true --kubeconfig=./kubelet.master.{{ item.1 }}.kubeconfig"
+  args:
+    chdir: "{{ config.directory }}/k8s/kubeconfigs"
+  with_indexed_items: "{{ groups['kubernetes-masters'] }}"
+
+- name: set the context for each kubelet master
+  shell: "kubectl config set-context default --cluster={{ kubernetes.cluster.name }} --user=system:node:master{{ item.0 + 1 }} --kubeconfig=./kubelet.master.{{ item.1 }}.kubeconfig"
+  args:
+    chdir: "{{ config.directory }}/k8s/kubeconfigs"
+  with_indexed_items: "{{ groups['kubernetes-masters'] }}"
+
+- name: change the context for each kubelet node
+  shell: "kubectl config use-context default --kubeconfig=./kubelet.master.{{ item.1 }}.kubeconfig"
+  args:
+    chdir: "{{ config.directory }}/k8s/kubeconfigs"
+  with_indexed_items: "{{ groups['kubernetes-masters'] }}"

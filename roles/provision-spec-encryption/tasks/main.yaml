@@ -1,0 +1,4 @@
+- name: generate the encryption configuration
+  template:
+    src: "encryption.yaml.j2"
+    dest: "{{ config.directory }}/k8s/specs/encryption.yaml"

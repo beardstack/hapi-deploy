@@ -1,0 +1,19 @@
+- name: check to see if the kubelet binary exists
+  become: yes
+  stat:
+    path: /usr/local/bin/kubelet
+  register: kubelet_binary
+
+- name: download and extract
+  become: yes
+  get_url:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kubelet"
+    dest: /usr/local/bin/
+  when: not kubelet_binary.stat.exists
+
+- name: make sure it's executable
+  become: yes
+  file:
+    path: /usr/local/bin/kubelet
+    mode: "u+rwx"
+  when: not kubelet_binary.stat.exists

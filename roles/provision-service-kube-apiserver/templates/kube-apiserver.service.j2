@@ -1,0 +1,42 @@
+[Unit]
+Description=Kubernetes API Server
+Documentation=https://github.com/kubernetes/kubernetes
+
+[Service]
+ExecStart=/usr/local/bin/kube-apiserver \
+  --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,ResourceQuota \
+  --advertise-address={{ item.1 }} \
+  --allow-privileged=true \
+  --apiserver-count={{ groups['kubernetes-masters'] | length }} \
+  --audit-log-maxage=30 \
+  --audit-log-maxbackup=3 \
+  --audit-log-maxsize=100 \
+  --audit-log-path=/var/log/audit.log \
+  --authorization-mode=Node,RBAC \
+  --bind-address=0.0.0.0 \
+  --client-ca-file=/var/lib/kubernetes/ca.pem \
+  --enable-swagger-ui=true \
+  --etcd-cafile=/var/lib/kubernetes/ca.pem \
+  --etcd-certfile=/var/lib/kubernetes/kube-api.pem \
+  --etcd-keyfile=/var/lib/kubernetes/kube-api-key.pem \
+  --etcd-servers={{ etcd_hosts_csv }} \
+  --event-ttl=1h \
+  --experimental-encryption-provider-config=/var/lib/kubernetes/encryption.yaml \
+  --insecure-bind-address=127.0.0.1 \
+  --kubelet-certificate-authority=/var/lib/kubernetes/ca.pem \
+  --kubelet-client-certificate=/var/lib/kubernetes/kube-api.pem \
+  --kubelet-client-key=/var/lib/kubernetes/kube-api-key.pem \
+  --kubelet-https=true \
+  --runtime-config=api/all \
+  --service-account-key-file=/var/lib/kubernetes/ca-key.pem \
+  --service-cluster-ip-range={{ kubernetes.cluster.serviceCIDR }} \
+  --service-node-port-range=30000-32767 \
+  --tls-ca-file=/var/lib/kubernetes/ca.pem \
+  --tls-cert-file=/var/lib/kubernetes/kube-api.pem \
+  --tls-private-key-file=/var/lib/kubernetes/kube-api-key.pem \
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

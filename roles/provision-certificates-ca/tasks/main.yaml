@@ -1,0 +1,12 @@
+- name: generate the configurations
+  template:
+    src: "{{ item }}.json.j2"
+    dest: "{{ config.directory }}/certs/configs/{{ item }}.json"
+  with_items:
+  - config
+  - ca.csr
+
+- name: generate the certificates
+  shell: "cfssl gencert -initca {{ config.directory }}/certs/configs/ca.csr.json | cfssljson -bare ca"
+  args:
+    chdir: "{{ config.directory }}/certs/outputs"

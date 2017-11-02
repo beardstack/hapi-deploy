@@ -1,0 +1,2 @@
+- name: install
+  shell: "kubectl apply -f {{ config.directory }}/k8s/specs/kubernetes-dashboard.yaml"

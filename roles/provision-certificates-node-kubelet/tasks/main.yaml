@@ -1,0 +1,11 @@
+- name: generate kubelet csr's for each node
+  template:
+    src: "kubelet.node.csr.json.j2"
+    dest: "{{ config.directory }}/certs/configs/kubelet.node.{{ item.1 }}.csr.json"
+  with_indexed_items: "{{ groups['kubernetes-nodes'] }}"
+
+- name: generate the kubelet certificates for each k8s node
+  shell: "cfssl gencert -ca=./ca.pem -ca-key=./ca-key.pem -config=../configs/config.json -hostname=node{{ item.0 + 1 }},{{ item.1 }} -profile=kubernetes ../configs/kubelet.node.{{ item.1 }}.csr.json | cfssljson -bare kubelet.node.{{ item.1 }}"
+  args:
+    chdir: "{{ config.directory }}/certs/outputs"
+  with_indexed_items: "{{ groups['kubernetes-nodes'] }}"

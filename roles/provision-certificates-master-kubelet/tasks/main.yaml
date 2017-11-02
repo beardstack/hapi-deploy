@@ -1,0 +1,11 @@
+- name: generate kubelet csr's for each master
+  template:
+    src: "kubelet.master.csr.json.j2"
+    dest: "{{ config.directory }}/certs/configs/kubelet.master.{{ item.1 }}.csr.json"
+  with_indexed_items: "{{ groups['kubernetes-masters'] }}"
+
+- name: generate the kubelet certificates for each k8s master
+  shell: "cfssl gencert -ca=./ca.pem -ca-key=./ca-key.pem -config=../configs/config.json -hostname=master{{ item.0 + 1 }},{{ item.1 }} -profile=kubernetes ../configs/kubelet.master.{{ item.1 }}.csr.json | cfssljson -bare kubelet.master.{{ item.1 }}"
+  args:
+    chdir: "{{ config.directory }}/certs/outputs"
+  with_indexed_items: "{{ groups['kubernetes-masters'] }}"

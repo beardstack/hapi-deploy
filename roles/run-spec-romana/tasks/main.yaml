@@ -1,0 +1,7 @@
+- name: install the configuration
+  shell: "kubectl -n kube-system create configmap romana-network-conf --from-file={{ config.directory }}/k8s/romana-network.json"
+  register: romana_config_result
+  failed_when: "'created' not in romana_config_result.stdout and 'already exists' not in romana_config_result.stderr"
+
+- name: install romana
+  shell: "kubectl apply -f {{ config.directory }}/k8s/specs/romana.yaml"

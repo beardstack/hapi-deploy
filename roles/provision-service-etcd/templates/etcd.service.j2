@@ -1,0 +1,28 @@
+[Unit]
+Description=etcd
+Documentation=https://github.com/coreos
+
+[Service]
+ExecStart=/usr/local/bin/etcd \
+  --name etcd{{ item.0 + 1 }} \
+  --cert-file=/etc/etcd/kube-api.pem \
+  --key-file=/etc/etcd/kube-api-key.pem \
+  --peer-cert-file=/etc/etcd/kube-api.pem \
+  --peer-key-file=/etc/etcd/kube-api-key.pem \
+  --trusted-ca-file=/etc/etcd/ca.pem \
+  --peer-trusted-ca-file=/etc/etcd/ca.pem \
+  --client-cert-auth \
+  --peer-client-cert-auth \
+  --initial-advertise-peer-urls https://{{ item.1 }}:2380 \
+  --listen-peer-urls https://{{ item.1 }}:2380 \
+  --listen-client-urls https://{{ item.1 }}:2379,http://127.0.0.1:2379 \
+  --advertise-client-urls https://{{ item.1 }}:2379 \
+  --initial-cluster-token etcd-cluster-0 \
+  --initial-cluster {{ etcd_hosts_csv }} \
+  --initial-cluster-state new \
+  --data-dir={{ kubernetes.etcd.database.path }}
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

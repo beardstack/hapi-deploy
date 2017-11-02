@@ -1,0 +1,35 @@
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/kubernetes/kubernetes
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStart=/usr/local/bin/kubelet \
+  --allow-privileged=true \
+  --anonymous-auth=false \
+  --authorization-mode=Webhook \
+  --client-ca-file=/var/lib/kubernetes/ca.pem \
+  --cluster-dns={{ kubernetes.cluster.dns }} \
+  --cluster-domain={{ kubernetes.cluster.domain }} \
+  --container-runtime=docker \
+  --container-runtime-endpoint=unix:///var/run/docker/libcontainerd/docker-containerd.sock \
+  --eviction-hard=memory.available<100Mi,nodefs.available<10%,nodefs.inodesFree<5%,imagefs.available<10%,imagefs.inodesFree<5% \
+  --hostname-override=node{{ item.0 + 1 }} \
+  --image-pull-progress-deadline=2m \
+  --kubeconfig=/var/lib/kubelet/kubeconfig \
+  --network-plugin=cni \
+  --node-labels=kubernetes.io/role=node,node-role.kubernetes.io/node= \
+  --pod-cidr={{ kubernetes.cluster.podCIDR }} \
+  --register-node=true \
+  --register-schedulable=true \
+  --require-kubeconfig \
+  --runtime-request-timeout=15m \
+  --tls-cert-file=/var/lib/kubelet/kubelet.pem \
+  --tls-private-key-file=/var/lib/kubelet/kubelet-key.pem \
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

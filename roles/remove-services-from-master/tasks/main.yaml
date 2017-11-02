@@ -1,0 +1,98 @@
+############################### kube-proxy ###############################
+
+- name: check to see if kube-proxy is running
+  become: yes
+  stat:
+    path: /etc/systemd/system/kube-proxy.service
+  register: kube_proxy
+
+- name: disable the kube-proxy
+  become: yes
+  service:
+    name: kube-proxy
+    state: stopped
+    enabled: no
+  when: kube_proxy.stat.exists
+
+############################### kubelet ###############################
+
+- name: check to see if kubelet is running
+  become: yes
+  stat:
+    path: /etc/systemd/system/kubelet.service
+  register: kubelet
+
+- name: disable the kubelet
+  become: yes
+  service:
+    name: kubelet
+    state: stopped
+    enabled: no
+  when: kubelet.stat.exists
+
+############################### kube-scheduler ###############################
+
+- name: check to see if kube-scheduler is running
+  become: yes
+  stat:
+    path: /etc/systemd/system/kube-scheduler.service
+  register: kube_scheduler
+
+- name: disable the kube-scheduler
+  become: yes
+  service:
+    name: kube-scheduler
+    state: stopped
+    enabled: no
+  when: kube_scheduler.stat.exists
+
+############################### kube-controller-manager ###############################
+
+- name: check to see if kube-controller-manager is running
+  become: yes
+  stat:
+    path: /etc/systemd/system/kube-controller-manager.service
+  register: kube_controller_manager
+
+- name: disable the kube-controller-manager
+  become: yes
+  service:
+    name: kube-controller-manager
+    state: stopped
+    enabled: no
+  when: kube_controller_manager.stat.exists
+
+############################### kube-apiserver ###############################
+
+- name: check to see if kube-apiserver is running
+  become: yes
+  stat:
+    path: /etc/systemd/system/kube-apiserver.service
+  register: kube_apiserver
+
+- name: disable the kube-apiserver
+  become: yes
+  service:
+    name: kube-apiserver
+    state: stopped
+    enabled: no
+  when: kube_apiserver.stat.exists
+
+############################### cleanup ###############################
+
+- name: remove all of the services
+  become: yes
+  file:
+    path: "/etc/systemd/system/{{ item }}.service"
+    state: absent
+  with_items:
+  - kube-proxy
+  - kubelet
+  - kube-scheduler
+  - kube-controller-manager
+  - kube-apiserver
+
+- name: reload the system daemon
+  become: yes
+  systemd:
+    daemon_reload: yes

@@ -1,0 +1,38 @@
+- hosts: localhost
+  roles:
+  # preparation
+  - install-cfssl
+  - install-kubernetes-cli
+  - setup-config-directory
+
+  # certificates
+  - provision-certificates-ca
+  - provision-certificates-kube-apiserver
+  - provision-certificates-master-kubelet
+  - provision-certificates-node-kubelet
+  - provision-certificates-kube-proxy
+  - provision-certificates-admin
+
+  # kubeconfigs
+  - provision-kubeconfig-kube-proxy
+  - provision-kubeconfig-admin
+  - provision-kubeconfig-master-kubelets
+  - provision-kubeconfig-node-kubelets
+
+  # services
+  - provision-service-etcd
+  - provision-service-kube-apiserver
+  - provision-service-kube-controller-manager
+  - provision-service-kube-scheduler
+  - provision-service-master-kubelet
+  - provision-service-node-kubelet
+  - provision-service-kube-proxy
+
+  # kube specs
+  - provision-spec-encryption
+  - provision-spec-kubelet-rbac
+  - provision-spec-romana
+  - provision-spec-dns
+  - provision-spec-heapster
+  - provision-spec-dashboard
+  - provision-spec-rook

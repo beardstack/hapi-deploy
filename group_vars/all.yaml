@@ -1,0 +1,98 @@
+# using this allows us to skip having to install python dependencies on the host machine (for ansible)
+ansible_python_interpreter: "/usr/bin/python3"
+
+# this is the path at which any local configurations are saved to
+config:
+  directory: "/tmp/radium-configs"
+
+# certificate settings
+certificates:
+
+  # arbitrary tbh
+  state:
+    code: "FL"
+    full: "Florida"
+  city: "Miami"
+  country:
+    code: "US"
+
+  # the length of time before our certificates expire
+  expiration: "8760h"
+
+  # the encryption settings for the certificates
+  encryption:
+    algorithm: "rsa"
+    size: 2048
+
+# kubernetes settings
+kubernetes:
+
+  # the version of kube components that will be installed
+  version: "1.8.2"
+
+  # the inner-cluster access IP (this IP needs to listen for requests and load-balance
+  # them to the kube-apiserver's on port 6443 using TLS)
+  accessIP: "192.168.13.1"
+
+  cluster:
+
+    # these are generally used for the entry into the kubeconfigs
+    name: "kubernetes.radium"
+    shortName: "radium"
+
+    # this is the default domain to use for inner cluster DNS resolution
+    domain: "cluster.local"
+
+    # pod CIDR
+    podCIDR: "10.200.0.0/16"
+
+    # service CIDR
+    serviceCIDR: "10.32.0.0/24"
+
+    # reserved IP for kube-dns
+    dns: "10.32.0.10"
+
+    # reserved IP for the kubernetes IP (usually the first IP address in the service CIDR)
+    serviceIP: "10.32.0.1"
+  cni:
+    # this is pretty standard
+    version: "0.6.0"
+  romana:
+    # the version of romana to use
+    version: "2.0-preview.3"
+
+    # since we're using 3 hosts, this will make:
+    # first IP: 10.200.0.0
+    # last IP: 10.200.3.255
+    podCIDR: "10.200.0.0/22"
+
+    # romana setting
+    blockMask: 29
+
+    # the IP of the romana service
+    serviceIP: "10.32.0.99"
+
+    # the IP of the etcd service (for romana)
+    etcd:
+      serviceIP: "10.32.0.88"
+
+  # must be 32 chars
+  encryptionKey: "E92kQnLJZwUyVfA6Qf9AlM2b1x9O8fx2"
+
+  # etcd settings
+  etcd:
+    # the version of etcd to use for the kube-apiserver
+    version: "3.2.9"
+
+    # database settings and paths
+    database:
+      path: "/var/lib/etcd"
+
+  # rook settings
+  rook:
+
+    # the path where rook will store its configuration
+    hostConfigPath: "/rook/config"
+
+    # the path where rook will store its data
+    hostStoragePath: "/rook/storage"

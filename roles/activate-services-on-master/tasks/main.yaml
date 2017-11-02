@@ -1,0 +1,43 @@
+- name: copy this hosts kube-apiserver service file
+  become: yes
+  copy:
+    src: "{{ config.directory }}/services/kube-apiserver.{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}.service"
+    dest: "/etc/systemd/system/kube-apiserver.service"
+
+- name: copy this hosts kubelet service file
+  become: yes
+  copy:
+    src: "{{ config.directory }}/services/kubelet.master.{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}.service"
+    dest: "/etc/systemd/system/kubelet.service"
+
+- name: copy the remaining kube services into place
+  become: yes
+  copy:
+    src: "{{ config.directory }}/services/{{ item }}.service"
+    dest: "/etc/systemd/system/{{ item }}.service"
+  with_items:
+  - kube-controller-manager
+  - kube-scheduler
+  - kube-proxy
+
+- name: reload the system daemon
+  become: yes
+  systemd:
+    daemon_reload: yes
+
+- name: enable and start all of the services
+  become: yes
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+  - kube-apiserver
+  - kube-controller-manager
+  - kube-scheduler
+  - kubelet
+  - kube-proxy
+
+- name: wait for services to boot fully before continuing
+  pause:
+    seconds: 10

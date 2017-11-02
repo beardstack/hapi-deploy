@@ -1,0 +1,86 @@
+############################### BINARIES ###############################
+
+- name: check to see if the etcd binary exists
+  become: yes
+  stat:
+    path: /usr/local/bin/etcd
+  register: etcd_binary
+
+- name: check to see if the etcdctl binary exists
+  become: yes
+  stat:
+    path: /usr/local/bin/etcdctl
+  register: etcdctl_binary
+
+- name: download the etcd binaries (if they don't exist)
+  become: yes
+  unarchive:
+    src: "https://github.com/coreos/etcd/releases/download/v{{ kubernetes.etcd.version }}/etcd-v{{ kubernetes.etcd.version }}-linux-amd64.tar.gz"
+    dest: "/tmp"
+    copy: no
+  when: not etcd_binary.stat.exists or not etcdctl_binary.stat.exists
+
+- name: install the etcd binaries (if they don't exist)
+  become: yes
+  command: "mv /tmp/etcd-v{{ kubernetes.etcd.version }}-linux-amd64/{{ item }} /usr/local/bin/"
+  with_items:
+  - etcd
+  - etcdctl
+  when: not etcd_binary.stat.exists or not etcdctl_binary.stat.exists
+
+############################### CERTIFICATES ###############################
+
+- name: make sure any etcd directories exist
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+  - /etc/etcd
+  - "{{ kubernetes.etcd.database.path }}"
+
+- name: copy the previously provisioned certs into place
+  become: yes
+  copy:
+    src: "{{ config.directory }}/certs/outputs/{{ item }}"
+    dest: "/etc/etcd/{{ item }}"
+  with_items:
+  - ca.pem
+  - kube-api-key.pem
+  - kube-api.pem
+
+############################### SERVICES ###############################
+
+- name: check if etcd is running
+  become: yes
+  command: systemctl status etcd
+  ignore_errors: yes
+  changed_when: false
+  register: service_etcd_status
+
+- name: copy this hosts service file
+  become: yes
+  copy:
+    src: "{{ config.directory }}/services/etcd.{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}.service"
+    dest: "/etc/systemd/system/etcd.service"
+
+- name: reload the system daemon
+  become: yes
+  systemd:
+    daemon_reload: yes
+
+- name: install the etcd service
+  become: yes
+  service:
+    name: etcd
+    state: started
+    enabled: yes
+  when: service_etcd_status | failed
+
+- name: restart the etcd service
+  become: yes
+  service:
+    name: etcd
+    state: restarted
+    enabled: yes
+  when: not (service_etcd_status | failed)

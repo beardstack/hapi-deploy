@@ -1,0 +1,11 @@
+- name: make sure any directories exist
+  become: yes
+  file:
+    path: /var/lib/kubernetes
+    state: directory
+
+- name: copy the encryption spec into place
+  become: yes
+  copy:
+    src: "{{ config.directory }}/k8s/specs/encryption.yaml"
+    dest: /var/lib/kubernetes

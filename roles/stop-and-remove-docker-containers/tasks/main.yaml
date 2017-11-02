@@ -1,0 +1,16 @@
+- name: check to see if the docker binary exists
+  become: yes
+  stat:
+    path: /usr/bin/docker
+  register: docker_binary
+
+- name: stop all docker containers
+  become: yes
+  ignore_errors: true
+  shell: "docker stop $(docker ps -a -q)"
+  when: docker_binary.stat.exists
+
+- name: cleanup docker
+  become: yes
+  shell: "docker system prune -f"
+  when: docker_binary.stat.exists

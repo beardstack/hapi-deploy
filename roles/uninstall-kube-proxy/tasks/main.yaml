@@ -1,0 +1,5 @@
+- name: remove the binary
+  become: yes
+  file:
+    path: /usr/local/bin/kube-proxy
+    state: absent

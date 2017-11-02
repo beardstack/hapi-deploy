@@ -1,0 +1,20 @@
+{
+  "networks": [
+    {
+      "name": "{{ kubernetes.cluster.shortName }}",
+      "cidr": "{{ kubernetes.romana.podCIDR }}",
+      "block_mask": {{ kubernetes.romana.blockMask }}
+    }
+  ],
+  "topologies": [
+    {
+      "networks": [ "{{ kubernetes.cluster.shortName }}" ],
+      "map": [
+{% for item in groups['kubernetes-nodes'] %}
+        { "groups": [] },
+{% endfor %}
+        { "groups": [] }
+      ]
+    }
+  ]
+}

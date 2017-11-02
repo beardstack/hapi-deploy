@@ -1,0 +1,4 @@
+- name: create a kube-scheduler service
+  template:
+    src: kube-scheduler.service.j2
+    dest: "{{ config.directory }}/services/kube-scheduler.service"

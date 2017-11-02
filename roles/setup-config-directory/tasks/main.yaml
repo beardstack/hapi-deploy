@@ -1,0 +1,13 @@
+- name: make sure all of the config directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+  - "{{ config.directory }}"
+  - "{{ config.directory }}/certs"
+  - "{{ config.directory }}/certs/configs"
+  - "{{ config.directory }}/certs/outputs"
+  - "{{ config.directory }}/k8s"
+  - "{{ config.directory }}/k8s/kubeconfigs"
+  - "{{ config.directory }}/k8s/specs"
+  - "{{ config.directory }}/services"
