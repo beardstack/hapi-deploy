@@ -2,3 +2,5 @@
   get_url:
     url: https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
     dest: "{{ config.directory }}/k8s/specs/kubernetes-dashboard.yaml"
+    use_proxy: yes
+    validate_certs: no
