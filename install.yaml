@@ -1,3 +1,12 @@
+- hosts: all
+  roles:
+  - terraform
+  # enable forwarding (until romana patch comes out)
+  - enable-iptables-forwarding
+  become: yes
+  become_method: sudo
+
+
 - hosts: etcd-nodes
   roles:
   - install-etcd
@@ -24,8 +33,7 @@
   - activate-services-on-master
   - run-spec-kubelet-rbac
 
-  # enable forwarding (until romana patch comes out)
-  - enable-iptables-forwarding
+
 
 - hosts: kubernetes-nodes
   roles:
@@ -43,9 +51,6 @@
 
   # activate everything
   - activate-services-on-node
-
-  # enable forwarding (until romana patch comes out)
-  - enable-iptables-forwarding
 
 - hosts: localhost
   roles:
