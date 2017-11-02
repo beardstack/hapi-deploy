@@ -6,6 +6,6 @@
 
 - name: run the kubelet rbac spec
   become: yes
-  shell: "kubectl create -f /tmp/kubelet.rbac.yaml"
+  shell: "/usr/local/bin/kubectl create -f /tmp/kubelet.rbac.yaml"
   register: kubelet_rbac_spec_result
   failed_when: "'created' not in kubelet_rbac_spec_result.stdout and 'already exists' not in kubelet_rbac_spec_result.stderr"
