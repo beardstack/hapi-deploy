@@ -12,5 +12,3 @@
   - "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kube-proxy"
   - "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kube-scheduler"
   - "https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes.version }}/bin/linux/amd64/kubelet"
-
-
