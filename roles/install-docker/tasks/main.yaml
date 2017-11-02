@@ -5,6 +5,7 @@
   register: docker_binary
 
 - name: add the docker rpm_key
+  become: yes
   rpm_key:
     state: present
     key: https://download.docker.com/linux/centos/gpg
@@ -12,6 +13,7 @@
     
   
 - name: Download Docker CE repository conf
+  become: yes
   get_url:
     url: https://download.docker.com/linux/centos/docker-ce.repo
     dest: /etc/yum.repos.d/docker-ce.repo
