@@ -1,8 +1,3 @@
-# - name: make sure cfssl is installed
-  # homebrew:
-    # name: cfssl
-    # state: present
-    
 - name: Download cfssl
   get_url:
     url: https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
