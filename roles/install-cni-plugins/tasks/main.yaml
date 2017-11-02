@@ -17,4 +17,5 @@
     src: "https://github.com/containernetworking/plugins/releases/download/v{{ kubernetes.cni.version }}/cni-plugins-amd64-v{{ kubernetes.cni.version }}.tgz"
     dest: "/opt/cni/bin/"
     copy: no
+    validate_certs: no
   when: not cni_plugins.stat.exists
