@@ -4,31 +4,35 @@
     path: /usr/bin/docker
   register: docker_binary
 
-- name: add the docker apt-key
-  become: yes
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
+- name: add the docker rpm_key
+  rpm_key:
     state: present
+    key: https://download.docker.com/linux/centos/gpg
+  
+- name: Download Docker CE repository conf
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+    validate_certs: no
   when: not docker_binary.stat.exists
-
-- name: get the release
+  
+- name: Create a systemd drop-in directory for the docker service
   become: yes
-  command: lsb_release -cs
-  register: release
-  when: not docker_binary.stat.exists
-
-- name: add the docker apt repository
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    mode: 0700
+    
+- name: Configure docker proxy settings
   become: yes
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ release.stdout }} stable"
+  template:
+    src: "https-proxy.conf.j2"
+    dest: "/etc/systemd/system/docker.service.d/https-proxy.conf"
+
+- name: Install Docker
+  become: yes
+  yum:
+    name: "{{ item }}"
     state: present
-  when: not docker_binary.stat.exists
-
-- name: install docker
-  become: yes
-  apt:
-    name: docker-ce
-    state: latest
-    update_cache: yes
-    cache_valid_time: 3600
-  when: not docker_binary.stat.exists
+  with_items:
+  - docker-ce

@@ -39,14 +39,7 @@
   command: swapoff --all
   ignore_errors: yes
   
-- name: Download Docker CE repository conf
-  get_url:
-    url: https://download.docker.com/linux/centos/docker-ce.repo
-    dest: /etc/yum.repos.d/docker-ce.repo
-    force: yes
-    validate_certs: no
-
-  
+ 
 - name: Install basic tools
   yum: name={{ item }} state=present
   with_items:
@@ -62,6 +55,7 @@
   - yum-utils
   - device-mapper-persistent-data
   - lvm2
+  - redhat-lsb
   
 - name: Create temp directory for script
   file:
@@ -100,19 +94,5 @@
   - 'alias pods_status="kubectl get pods -n kube-system"'
   - 'export PATH={{server_settings.paths}}'
 
-    
-    
-- name: Create a systemd drop-in directory for the docker service
-  become: yes
-  file:
-    path: /etc/systemd/system/docker.service.d
-    state: directory
-    mode: 0700
-    
-- name: Configure docker proxy settings
-  become: yes
-  template:
-    src: "https-proxy.conf.j2"
-    dest: "/etc/systemd/system/docker.service.d/https-proxy.conf"
 
 

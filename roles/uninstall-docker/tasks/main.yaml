@@ -4,31 +4,23 @@
     path: /usr/bin/docker
   register: docker_binary
 
-- name: remove the docker apt-key
-  become: yes
-  apt_key:
-    id: 0EBFCD88
+- rpm_key:
     state: absent
+    key: https://download.docker.com/linux/centos/gpg
   when: docker_binary.stat.exists
-
+  
 - name: get the release
   become: yes
   command: lsb_release -cs
   register: release
   when: docker_binary.stat.exists
-
-- name: remove the docker apt repository
+  
+- name: Remove docker
   become: yes
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ release.stdout }} stable"
+  yum:
+    name: 'docker*'
     state: absent
-  when: docker_binary.stat.exists
-
-- name: uninstall docker
-  become: yes
-  apt:
-    name: docker-ce
     autoremove: yes
-    state: absent
     purge: yes
   when: docker_binary.stat.exists
+
