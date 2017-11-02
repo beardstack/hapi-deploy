@@ -1,0 +1,118 @@
+---
+
+- name: Change timezone to EST
+  timezone: 
+    name: America/Toronto
+     
+- name: Update hosts file and environment variables
+  copy:
+    src: "{{item}}"
+    dest: /etc/
+  with_items:
+    - hosts
+
+- name: Configure curl settings   
+  template:
+    src: curlrc.j2
+    dest: /root/.curlrc
+  
+- name: Configure /etc/environment  
+  template:
+    src: environment.j2
+    dest: /etc/environment  
+
+- name: Configure /etc/wgetrc 
+  template:
+    src: wgetrc.j2
+    dest: /etc/wgetrc      
+    
+- name : Configure Proxy for yum
+  lineinfile:
+    dest: /etc/yum.conf
+    regexp: '^proxy='
+    line: proxy={{icn_settings.http_proxy}}
+    
+- name: Disable selinux
+  selinux: state=disabled
+  
+- name: Disable swap
+  command: swapoff --all
+  ignore_errors: yes
+  
+- name: Download Docker CE repository conf
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+    force: yes
+    validate_certs: no
+
+  
+- name: Install basic tools
+  yum: name={{ item }} state=present
+  with_items:
+  - epel-release
+  - nano
+  - curl
+  - zsh
+  - git
+  - wget
+  - nmap
+  - ntp
+  - mc
+  - yum-utils
+  - device-mapper-persistent-data
+  - lvm2
+  
+- name: Create temp directory for script
+  file:
+    path: /tmp/.ohmyzsh
+    state: directory
+
+- name: Download ohmyzsh
+  get_url:
+    url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    dest: /tmp/.ohmyzsh/install.sh
+    use_proxy: yes
+    validate_certs: no
+    mode: 0700
+
+- name: Install ohmyzsh
+  shell: /tmp/.ohmyzsh/install.sh
+
+- name : Configure theme for ohmyzsh
+  lineinfile:
+    dest:  ~/.zshrc
+    regexp: '^ZSH_THEME='
+    line: 'ZSH_THEME="aussiegeek"'
+    
+- name: add zsh aliases
+  lineinfile: 
+    dest: ~/.zshrc
+    line: "{{item}}"
+  with_items:
+  - 'alias ssh_init="ssh-agent zsh && ssh-add ~/.ssh/id_rsa"'
+  - 'alias aps_status="service kube-apiserver status | cat"'
+  - 'alias kcm_status="service kube-controller-manager status | cat"'
+  - 'alias ks_status="service kube-scheduler status | cat"'
+  - 'alias kblt_status="service kubelet status | cat"'
+  - 'alias kp_status="service kube-proxy status | cat"'
+  - 'alias node_status="kubectl get nodes"'
+  - 'alias pods_status="kubectl get pods -n kube-system"'
+  - 'export PATH={{server_settings.paths}}'
+
+    
+    
+- name: Create a systemd drop-in directory for the docker service
+  become: yes
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    mode: 0700
+    
+- name: Configure docker proxy settings
+  become: yes
+  template:
+    src: "https-proxy.conf.j2"
+    dest: "/etc/systemd/system/docker.service.d/https-proxy.conf"
+
+

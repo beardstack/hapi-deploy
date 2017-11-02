@@ -1,98 +1,54 @@
-# using this allows us to skip having to install python dependencies on the host machine (for ansible)
-ansible_python_interpreter: "/usr/bin/python3"
-
+#ansible_python_interpreter: "/usr/bin/python3.6"
 # this is the path at which any local configurations are saved to
 config:
-  directory: "/tmp/radium-configs"
-
-# certificate settings
+  directory: "/tmp/hapi-configs"
 certificates:
-
-  # arbitrary tbh
-  state:
-    code: "FL"
-    full: "Florida"
-  city: "Miami"
   country:
-    code: "US"
-
-  # the length of time before our certificates expire
+    code: "CA"
+  state:
+    code: "QC"
+    full: "Quebec"
+  city: "Montreal"
+  Organization: "BCE"
+  Organizational_Unit: "WNOC"
   expiration: "8760h"
-
-  # the encryption settings for the certificates
   encryption:
     algorithm: "rsa"
     size: 2048
-
-# kubernetes settings
 kubernetes:
-
-  # the version of kube components that will be installed
   version: "1.8.2"
-
-  # the inner-cluster access IP (this IP needs to listen for requests and load-balance
-  # them to the kube-apiserver's on port 6443 using TLS)
-  accessIP: "192.168.13.1"
-
+  accessIP: "192.168.0.65"
   cluster:
-
-    # these are generally used for the entry into the kubeconfigs
-    name: "kubernetes.radium"
-    shortName: "radium"
-
-    # this is the default domain to use for inner cluster DNS resolution
-    domain: "cluster.local"
-
-    # pod CIDR
+    shortName: "hapi"
+    name: "hapi.novalocal"
+    shortName: "hapi"
     podCIDR: "10.200.0.0/16"
-
-    # service CIDR
     serviceCIDR: "10.32.0.0/24"
-
-    # reserved IP for kube-dns
     dns: "10.32.0.10"
-
-    # reserved IP for the kubernetes IP (usually the first IP address in the service CIDR)
     serviceIP: "10.32.0.1"
   cni:
-    # this is pretty standard
     version: "0.6.0"
   romana:
-    # the version of romana to use
     version: "2.0-preview.3"
-
-    # since we're using 3 hosts, this will make:
-    # first IP: 10.200.0.0
-    # last IP: 10.200.3.255
     podCIDR: "10.200.0.0/22"
-
-    # romana setting
     blockMask: 29
-
-    # the IP of the romana service
     serviceIP: "10.32.0.99"
-
-    # the IP of the etcd service (for romana)
     etcd:
       serviceIP: "10.32.0.88"
-
   # must be 32 chars
   encryptionKey: "E92kQnLJZwUyVfA6Qf9AlM2b1x9O8fx2"
-
-  # etcd settings
   etcd:
-    # the version of etcd to use for the kube-apiserver
     version: "3.2.9"
-
-    # database settings and paths
     database:
       path: "/var/lib/etcd"
-
-  # rook settings
   rook:
-
-    # the path where rook will store its configuration
     hostConfigPath: "/rook/config"
-
-    # the path where rook will store its data
     hostStoragePath: "/rook/storage"
+icn_settings:
+  http_proxy: "http://142.117.128.41:80"
+  https_proxy: "http://142.117.128.41:80"
+  no_proxy: "localhost,127.0.0.1,.novalocal,192.168.0.56,192.168.0.57,192.168.0.58,192.168.0.59,192.168.0.60,192.168.0.61,192.168.0.62,192.168.0.63,192.168.0.64,192.168.0.65,wnoc-etc-1,wnoc-etc-2,wnoc-etc-3,wnoc-etc-1.novalocal,wnoc-etc-2.novalocal,wnoc-etc-3.novalocal,wnoc-kubemaster-1,wnoc-kubemaster-2,wnoc-kubemaster-3,wnoc-kubemaster-1.novalocal,wnoc-kubemaster-2.novalocal,wnoc-kubemaster-3.novalocal,wnoc-kube-1,wnoc-kube-1.novalocal,wnoc-kube-2,wnoc-kube-2.novalocal,wnoc-kube-3,wnoc-kube-3.novalocal,lb,lb.novalocal"
+
+server_settings:
+  paths: "/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/usr/local/bin"
+ 
