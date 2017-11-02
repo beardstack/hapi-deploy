@@ -18,6 +18,7 @@
     src: "https://github.com/coreos/etcd/releases/download/v{{ kubernetes.etcd.version }}/etcd-v{{ kubernetes.etcd.version }}-linux-amd64.tar.gz"
     dest: "/tmp"
     copy: no
+    validate_certs: no
   when: not etcd_binary.stat.exists or not etcdctl_binary.stat.exists
 
 - name: install the etcd binaries (if they don't exist)
