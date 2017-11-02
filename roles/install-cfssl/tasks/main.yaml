@@ -1,4 +1,26 @@
-- name: make sure cfssl is installed
-  homebrew:
-    name: cfssl
-    state: present
+# - name: make sure cfssl is installed
+  # homebrew:
+    # name: cfssl
+    # state: present
+    
+- name: Download cfssl
+  get_url:
+    url: https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
+    dest: /usr/local/bin/cfssl
+    mode: 0700
+    use_proxy: yes
+    validate_certs: no
+    
+- name: Download cfssljson
+  get_url:
+    url: https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
+    dest: /usr/local/bin/cfssljson
+    mode: 0700
+    use_proxy: yes
+    validate_certs: no
+
+- name: Test cfssl version
+  command: "/usr/local/bin/cfssl version"
+  register: cfssl_ver
+  
+- debug: msg="{{ cfssl_ver.stdout }}"
