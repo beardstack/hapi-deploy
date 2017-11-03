@@ -1,0 +1,5 @@
+- hosts: kubernetes-masters
+  gather_facts: no
+  roles:
+  - unmount-volumes
+  
