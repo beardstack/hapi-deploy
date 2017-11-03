@@ -1,10 +1,10 @@
-# <hapi> deployment
+# hapi deployment
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
 
 ## Purpose
 
-Centos version of the ansible deployment of [Carl Danley's Radium deployment](https://github.com/carldanley/radium-cluster) which is itself adapted approach based on Kelsey Hightower's [kubernetes the "hard" way](https://github.com/kelseyhightower/kubernetes-the-hard-way).
+Centos version of the ansible deployment of [Carl Danley's Radium deployment](https://github.com/carldanley/radium-cluster) which is itself based on Kelsey Hightower's [kubernetes the "hard" way](https://github.com/kelseyhightower/kubernetes-the-hard-way).
 
 ## Goals
 
