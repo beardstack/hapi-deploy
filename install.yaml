@@ -3,6 +3,7 @@
   - terraform
   # enable forwarding (until romana patch comes out)
   - enable-iptables-forwarding
+  - update-trust-stores
   become: yes
   become_method: sudo
 
