@@ -56,11 +56,18 @@
   - device-mapper-persistent-data
   - lvm2
   - redhat-lsb
+
+- name: check to see if the /bin/zsh binary exists
+  become: yes
+  stat:
+    path: /bin/zsh
+  register: zsh
   
 - name: Create temp directory for script
   file:
     path: /tmp/.ohmyzsh
     state: directory
+  when: not zsh.stat.exists
 
 - name: Download ohmyzsh
   get_url:
@@ -69,10 +76,21 @@
     use_proxy: yes
     validate_certs: no
     mode: 0700
+  when: not zsh.stat.exists
 
 - name: Install ohmyzsh
   shell: /tmp/.ohmyzsh/install.sh
+  when: not zsh.stat.exists
 
+  
+- name: Check whether ~/.zshrc contains "aussiegeek theme", this will determine whether we need to add other aliases
+  command: awk /aussiegeek/ ~/.zshrc
+  register: checkmyconf
+  # check_mode: True
+  # ignore_errors: True
+  changed_when: False
+  
+  
 - name : Configure theme for ohmyzsh
   lineinfile:
     dest:  ~/.zshrc
@@ -93,6 +111,7 @@
   - 'alias node_status="kubectl get nodes"'
   - 'alias pods_status="kubectl get pods -n kube-system"'
   - 'export PATH={{server_settings.paths}}'
+
 
 
 

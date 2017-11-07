@@ -1,0 +1,13 @@
+- name: copy CA.pem to node
+  become: yes
+  src: "{{ config.directory }}/certs/outputs/ca.pem"
+  dest: "/etc/pki/ca-trust/source/anchors/ca.pem"
+  mode: 0700
+  
+- name: update CA trust store
+  shell: /usr/bin/update-ca-trust force-enable
+  become: yes
+
+- name: update CA trust store
+  shell: /usr/bin/update-ca-trust extract
+  become: yes
