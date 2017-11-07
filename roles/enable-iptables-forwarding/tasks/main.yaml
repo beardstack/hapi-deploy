@@ -3,4 +3,4 @@
   cron:
     name: "enable iptables forwarding"
     minute: "*/1"
-    job: "iptables -P FORWARD ACCEPT"
+    job: "/sbin/iptables -P FORWARD ACCEPT"
