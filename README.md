@@ -30,3 +30,6 @@ This cluster bootstraps 3 etcd nodes, 3 kubernetes masters and 3 kubernetes node
 | [rook](https://rook.io/) | 0.5.1 |
 
 
+
+
+...//
