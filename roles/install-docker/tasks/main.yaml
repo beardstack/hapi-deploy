@@ -40,3 +40,9 @@
     state: present
   with_items:
   - docker-ce
+  
+- name: Start docker
+  become: yes
+  service:
+    name: docker
+    state: started
