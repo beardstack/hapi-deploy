@@ -63,10 +63,10 @@
   - cockpit-docker
   - cockpit-kubernetes
 
-- name: check to see if the /bin/zsh binary exists
+- name: check to see if the ~/.zshrc exists
   become: yes
   stat:
-    path: /bin/zsh
+    path: ~/.zshrc
   register: zsh
   
 - name: Create temp directory for script

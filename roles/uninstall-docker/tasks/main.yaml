@@ -3,15 +3,7 @@
   stat:
     path: /usr/bin/docker
   register: docker_binary
-
-- name: Remove gpg key
-  become: yes
-  rpm_key:
-    state: absent
-    key: https://download.docker.com/linux/centos/gpg
-    validate_certs: no
-  when: docker_binary.stat.exists
-  
+ 
 - name: get the release
   become: yes
   command: lsb_release -cs
@@ -22,6 +14,6 @@
   become: yes
   yum:
     name: 'docker*'
-    state: removed
+    state: stopped
   when: docker_binary.stat.exists
 

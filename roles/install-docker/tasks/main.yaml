@@ -18,7 +18,6 @@
     url: https://download.docker.com/linux/centos/docker-ce.repo
     dest: /etc/yum.repos.d/docker-ce.repo
     validate_certs: no
-  when: not docker_binary.stat.exists
   
 - name: Create a systemd drop-in directory for the docker service
   become: yes
