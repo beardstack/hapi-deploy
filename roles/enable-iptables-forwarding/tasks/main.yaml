@@ -4,3 +4,17 @@
     name: "enable iptables forwarding"
     minute: "*/1"
     job: "/sbin/iptables -P FORWARD ACCEPT"
+
+- name: ensure that NTP is allowed OUT
+  become: yes
+  cron:
+    name: "enable NTP OUTPUT"
+    minute: "*/1"
+    job: "/sbin/iptables -P -A OUTPUT -p udp --dport 123 -j ACCEPT"
+    
+- name: ensure that NTP is allowed IN
+  become: yes
+  cron:
+    name: "enable NTP INPUT"
+    minute: "*/1"
+    job: "/sbin/iptables -A INPUT -p udp --sport 123 -j ACCEPT"    
