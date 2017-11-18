@@ -2,3 +2,8 @@
   file:
     path: "{{ config.directory }}"
     state: absent
+
+- name: remove the local kubeconfig
+  file:
+    path: "/root/.kube/config"
+    state: absent
