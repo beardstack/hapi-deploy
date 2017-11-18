@@ -52,3 +52,6 @@ icn_settings:
 server_settings:
   paths: "/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/usr/local/bin"
  
+ntp_servers:
+  server0: "172.25.166.66"
+  server1: "172.25.155.225"

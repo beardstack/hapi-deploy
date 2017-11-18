@@ -46,16 +46,22 @@
   - epel-release
   - nano
   - curl
+  - traceroute
+  - tcpdump
   - zsh
   - git
   - wget
   - nmap
   - ntp
+  - chrony
   - mc
   - yum-utils
   - device-mapper-persistent-data
   - lvm2
   - redhat-lsb
+  - cockpit
+  - cockpit-docker
+  - cockpit-kubernetes
 
 - name: check to see if the /bin/zsh binary exists
   become: yes
@@ -86,8 +92,6 @@
 - name: Check whether ~/.zshrc contains "aussiegeek theme", this will determine whether we need to add other aliases
   command: awk /aussiegeek/ ~/.zshrc
   register: checkmyconf
-  # check_mode: True
-  # ignore_errors: True
   changed_when: False
   
   
@@ -112,6 +116,23 @@
   - 'alias pods_status="kubectl get pods -n kube-system"'
   - 'export PATH={{server_settings.paths}}'
 
+- name: Configure NTP settings   
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
 
+- name: Stop NTP server
+  sudo: yes
+  command: systemctl stop ntpd
 
+- name: Initial sync /w ntpdate 
+  sudo: yes
+  command: ntpdate {{ ntp_servers.server0 }}
+  
+- name: Enable NTP server
+  sudo: yes
+  command: systemctl enable ntpd
 
+- name: Start NTP server
+  sudo: yes
+  command: systemctl start ntpd
