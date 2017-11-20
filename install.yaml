@@ -75,6 +75,6 @@
   - install-admin-kubeconfig
   - run-spec-romana
   - run-spec-dns
-  - run-spec-heapster
+  # - run-spec-heapster
   # - run-spec-dashboard
   - run-spec-rook

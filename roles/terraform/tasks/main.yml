@@ -39,7 +39,14 @@
   command: swapoff --all
   ignore_errors: yes
   
- 
+- name: Create user account
+  user:
+    name: kubeadmin
+    comment: "Kubernetes Admin"
+    shell: /bin/zsh
+    groups: wheel, docker
+    append: yes
+  
 - name: Install basic tools
   yum: name={{ item }} state=present
   with_items:
