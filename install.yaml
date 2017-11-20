@@ -60,14 +60,14 @@
   # activate everything
   - activate-services-on-node
 
-# - hosts: entrypoint 
-  # roles: 
-  # - generate-ssh-keys
+- hosts: entrypoint 
+  roles: 
+  - generate-ssh-keys
   
-# - hosts: all
-  # roles: 
-  # - create-service-account
-  # - propagate-ssh-keys
+- hosts: all
+  roles: 
+  - create-service-account
+  - propagate-ssh-keys
   
 - hosts: localhost
   roles:
@@ -75,6 +75,4 @@
   - install-admin-kubeconfig
   - run-spec-romana
   - run-spec-dns
-  # - run-spec-heapster
-  # - run-spec-dashboard
   - run-spec-rook
