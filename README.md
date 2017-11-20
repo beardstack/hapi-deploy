@@ -22,7 +22,7 @@ This cluster bootstraps 3 etcd nodes, 3 kubernetes masters and 3 kubernetes node
 
 | Name | Version |
 |:-----|:-------:|
-| [Cockpit] (http://cockpit-project.org/) |  Version 151. |
+| [Cockpit](http://cockpit-project.org/) |  Version 151. |
 | [romana](http://romana.io/) | 2.0-preview.3 |
 | [kube-dns](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns) | 1.14.4 |
 | [influxdb](https://www.influxdata.com/) | 1.3.3 |
