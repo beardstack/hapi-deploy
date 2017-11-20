@@ -1,0 +1,5 @@
+- name: insert/update public authorized keys
+  blockinfile:
+    block: "{{ lookup('file', '/tmp/hapi-configs/kubeadmin.pub') }}"
+    dest: "/home/kubeadmin/.ssh/authorized_keys"
+    backup: yes

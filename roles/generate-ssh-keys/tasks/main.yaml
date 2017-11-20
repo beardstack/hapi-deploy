@@ -1,0 +1,8 @@
+- name: Generating RSA key for root
+  user: name=kubeadmin generate_ssh_key=yes
+  
+- name: Downloading pub key
+  fetch:
+    src: /home/kubeadmin/.ssh/id_rsa.pub
+    dest: "{{ config.directory }}/kubeadmin.pub"
+    flat: yes
