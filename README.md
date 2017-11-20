@@ -21,7 +21,7 @@ Running an on-prem Kubernetes cluster on OpenStack. The main goals of these ansi
 This cluster bootstraps 3 etcd nodes, 3 kubernetes masters and 3 kubernetes nodes.
 
 | Name | Version |Purpose|
-|:-----|:-------:|:-------|
+|:-----|:-------|:-------|
 | [Cockpit](http://cockpit-project.org/) |  Version 151. | Node and cluster control |
 | [romana](http://romana.io/) | 2.0-preview.3 | Automates the creation of isolated cloud native networks and secures them using microsegmentation |
 | [kube-dns](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns) | 1.14.4 | DNS Pods and Service on the cluster, other pods in cluster can use the DNS Service’s IP to resolve DNS|

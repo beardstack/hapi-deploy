@@ -10,7 +10,7 @@
   cron:
     name: "enable NTP OUTPUT"
     minute: "*/1"
-    job: "/sbin/iptables -P -A OUTPUT -p udp --dport 123 -j ACCEPT"
+    job: "/sbin/iptables -A OUTPUT -p udp --dport 123 -j ACCEPT"
     
 - name: ensure that NTP is allowed IN
   become: yes
