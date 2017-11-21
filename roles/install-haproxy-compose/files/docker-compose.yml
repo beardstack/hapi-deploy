@@ -1,0 +1,10 @@
+version: '2'
+services:
+  haproxy:
+    container_name: HAProxy
+    image: "haproxy:alpine"
+    volumes:
+    - /etc/haproxy:/usr/local/etc/haproxy:ro
+    ports:
+    - 6443:6443
+    restart: always
