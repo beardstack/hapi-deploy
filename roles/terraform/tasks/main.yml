@@ -39,7 +39,18 @@
   command: swapoff --all
   ignore_errors: yes
   
- 
+  
+- name: Disable Chronyd in favor of ntpd
+  service: name={{ item }} state=stopped enabled=no
+  with_items:
+  - chronyd
+   
+- name: upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+    update_cache: yes
+    
 - name: Install basic tools
   yum: name={{ item }} state=present
   with_items:

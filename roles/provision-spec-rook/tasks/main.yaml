@@ -1,4 +1,4 @@
-- name: generate the romana spec
+- name: generate the rook spec
   template:
     src: "{{ item }}.yaml.j2"
     dest: "{{ config.directory }}/k8s/specs/{{ item }}.yaml"
