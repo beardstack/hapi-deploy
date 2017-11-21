@@ -1,3 +1,9 @@
+- name: Create docker group
+  become: yes
+  group:
+    name: docker
+    state: present
+
 - name: Create user account
   user:
     name: kubeadmin
@@ -5,3 +11,33 @@
     shell: /bin/zsh
     groups: wheel, docker
     append: yes
+  become: yes
+
+- name: Check if authorized_keys exists  
+  stat:    
+    path: /home/kubeadmin/.ssh/authorized_keys
+  register: auth_keys
+  become: yes
+  
+- name: Delete user password
+  shell: passwd -d kubeadmin
+  become: yes
+  
+- name: Create .ssh directory 
+  file:
+    path: /home/kubeadmin/.ssh/
+    state: directory
+    mode: 0700
+  become: yes
+  become_user: kubeadmin
+  when: auth_keys.stat.exists == False
+   
+  
+- name: Create empty authorized_keys file.
+  copy:
+    content: ""
+    dest: /home/kubeadmin/.ssh/authorized_keys
+    force: no
+    owner: kubeadmin
+    mode: 0700
+  become: yes
