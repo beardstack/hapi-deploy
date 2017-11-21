@@ -1,0 +1,13 @@
+- name: Install cockpit
+  yum: name={{ item }} state=present
+  with_items:
+  - cockpit
+  - cockpit-docker
+  - cockpit-kubernetes
+  - cockpit-dashboard
+  - cockpit-sosreport 
+  - cockpit-system 
+  - cockpit-bridge 
+  - cockpit-dashboard
+  - cockpit-packagekit
+  - cockpit-networkmanager
