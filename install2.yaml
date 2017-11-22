@@ -1,0 +1,13 @@
+- hosts: localhost
+  roles:
+  - provision-spec-rook
+  become: yes
+  become_method: sudo  
+   
+- hosts: localhost
+  roles:
+  # - install-kubectl
+  # - install-admin-kubeconfig
+  # - run-spec-romana
+  # - run-spec-dns
+  - run-spec-rook

@@ -42,8 +42,8 @@ kubernetes:
     database:
       path: "/var/lib/etcd"
   rook:
-    hostConfigPath: "/rook/config"
-    hostStoragePath: "/rook/storage"
+    hostConfigPath: "/rook/conf"
+    hostStoragePath: "/rook/data"
 icn_settings:
   http_proxy: "http://142.117.128.41:80"
   https_proxy: "http://142.117.128.41:80"
