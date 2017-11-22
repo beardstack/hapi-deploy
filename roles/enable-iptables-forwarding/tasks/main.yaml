@@ -4,6 +4,12 @@
     name: "enable iptables forwarding"
     minute: "*/1"
     job: "/sbin/iptables -P FORWARD ACCEPT"
+    
+ # Allow related and established connections
+#- iptables:
+#    chain: FORWARD
+#    jump: ACCEPT
+#  become: yes   
 
 - name: ensure that NTP is allowed OUT
   become: yes
