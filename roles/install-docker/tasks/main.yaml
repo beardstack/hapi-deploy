@@ -4,6 +4,17 @@
     path: /usr/bin/docker
   register: docker_binary
 
+- name: Remove old Docker deps
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: absent
+    update_cache: yes
+  with_items:
+  - docker-common-2:1.12.6-61.git85d7426.el7.centos.x86_64
+  
+
+
 - name: add the docker rpm_key
   become: yes
   rpm_key:

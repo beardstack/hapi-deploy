@@ -72,19 +72,6 @@
   - redhat-lsb
   - libseccomp
   - libtool-ltdl
-  - cockpit
-  - cockpit-docker
-  - cockpit-kubernetes
-  - cockpit-dashboard
-  - cockpit-sosreport 
-  - cockpit-system 
-  - cockpit-bridge 
-  - cockpit-dashboard
-  - cockpit-packagekit
-  - cockpit-networkmanager
-
-  
-  
 
 - name: check to see if the ~/.zshrc exists
   become: yes

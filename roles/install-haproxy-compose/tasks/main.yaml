@@ -1,23 +1,27 @@
 - name: Ensure haproxy dir exists
+  become: yes
   file:
     path: /etc/haproxy
     state: directory
-    mode: 0644
+    mode: 0700
     
 - name: Move haproxy config
+  become: yes
   template:
-    src: haproxy.cfg
+    src: haproxy.cfg.j2
     dest: /etc/haproxy/haproxy.cfg
     owner: root
     group: docker
     mode: 0644
     
 - name: Create docker-compose.yml
+  become: yes
   copy:
     src: docker-compose.yml
     dest: /etc/haproxy/docker-compose.yml
     
 - name: Start HAProxy
+  become: yes
   command: "docker-compose up -d"
   args:
     chdir: /etc/haproxy
