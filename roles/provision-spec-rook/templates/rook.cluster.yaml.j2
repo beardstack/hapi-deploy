@@ -21,7 +21,7 @@ spec:
       storeType: bluestore
     nodes:
 {% for item in groups['kubernetes-nodes'] %}
-    - name: "node{{ loop.index }}"
+    - name: "wnoc-kube-{{ loop.index }}"
       directories:
       - path: "{{ kubernetes.rook.hostStoragePath }}"
 {% endfor %}

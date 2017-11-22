@@ -18,65 +18,67 @@
   # preparation
   - install-docker
   - install-docker-compose 
+  - install-haproxy-compose
   
-# - hosts: etcd-nodes
-  # roles:
-  # - install-etcd
+- hosts: etcd-nodes
+  roles:
+  - install-etcd
 
-# - hosts: kubernetes-masters
-  # roles:
-  # # preparation
-  # - install-docker
-  # - install-socat
-  # - install-cni-plugins
-  # - copy-certs-to-master
-  # - copy-kubeconfigs-to-master
-  # - copy-specs-to-master
+- hosts: kubernetes-masters
+  roles:
+  # preparation
+  - install-docker
+  - install-socat
+  - install-cni-plugins
+  - copy-certs-to-master
+  - copy-kubeconfigs-to-master
+  - copy-specs-to-master
 
-  # # kube components
-  # - install-kubectl
-  # - install-kube-apiserver
-  # - install-kube-controller-manager
-  # - install-kube-scheduler
-  # - install-kube-proxy
-  # - install-kubelet
+  # kube components
+  - install-kubectl
+  - install-kube-apiserver
+  - install-kube-controller-manager
+  - install-kube-scheduler
+  - install-kube-proxy
+  - install-kubelet
 
-  # # activate everything
-  # - activate-services-on-master
-  # - run-spec-kubelet-rbac
+  # activate everything
+  - activate-services-on-master
+  - run-spec-kubelet-rbac
 
 
 
-# - hosts: kubernetes-nodes
-  # roles:
-  # # preparation
-  # - install-docker
-  # - install-socat
-  # - install-cni-plugins
-  # - copy-certs-to-node
-  # - copy-kubeconfigs-to-node
+- hosts: kubernetes-nodes
+  roles:
+  # preparation
+  - install-docker
+  - install-socat
+  - install-cni-plugins
+  - copy-certs-to-node
+  - copy-kubeconfigs-to-node
 
-  # # kube components
-  # - install-kubectl
-  # - install-kube-proxy
-  # - install-kubelet
+  # kube components
+  - install-kubectl
+  - install-kube-proxy
+  - install-kubelet
 
-  # # activate everything
-  # - activate-services-on-node
+  # activate everything
+  - activate-services-on-node
 
-# - hosts: entrypoint 
-  # roles: 
-  # - generate-ssh-keys
+- hosts: entrypoint 
+  roles: 
+  - generate-ssh-keys
   
-# - hosts: all
-  # roles: 
-  # - create-service-account
-  # - propagate-ssh-keys
+- hosts: all
+  roles: 
+  - create-service-account
+  - propagate-ssh-keys
+  - install-cockpit
   
-# - hosts: localhost
-  # roles:
-  # - install-kubectl
-  # - install-admin-kubeconfig
-  # - run-spec-romana
-  # - run-spec-dns
+- hosts: localhost
+  roles:
+  - install-kubectl
+  - install-admin-kubeconfig
+  - run-spec-romana
+  - run-spec-dns
   # - run-spec-rook
