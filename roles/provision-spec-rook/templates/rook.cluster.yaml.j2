@@ -22,6 +22,5 @@ spec:
     nodes:
 {% for item in groups['kubernetes-nodes'] %}
     - name: "wnoc-kube-{{ loop.index }}"
-      directories:
-      - path: "{{ kubernetes.rook.hostStoragePath }}"
+	  deviceFilter: ^sd[b-z]
 {% endfor %}

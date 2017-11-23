@@ -16,4 +16,11 @@
     src: LABEL=rook-conf
     fstype: ext4
     state: mounted 
-   
+
+- name: Mount up device by label
+  become: yes
+  mount:
+    path: /rook/conf
+    src: LABEL=rook-data
+    fstype: ext4
+    state: mounted     
