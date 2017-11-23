@@ -1,15 +1,16 @@
 - name: Create rook mount directories
   become: yes
   file:
-    path: {{item}}
+    path: "{{item}}"
     state: directory
   with_items:
-  - "\rook"
-  - "\rook\data"
-  - "\rook\conf"
+  - "/rook"
+  - "/rook/data"
+  - "/rook/conf"
   
 
 - name: Mount up device by label
+  become: yes
   mount:
     path: /rook/conf
     src: LABEL=rook-conf
