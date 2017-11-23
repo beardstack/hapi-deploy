@@ -8,7 +8,7 @@
 - name: Downloading pub key
   fetch:
     src: /home/kubeadmin/.ssh/id_rsa.pub
-    dest: "{{ config.directory }}/kubeadmin"
+    dest: "{{ config.directory }}/kubeadmin.pub"
     fail_on_missing: yes
     flat: yes
   become: true

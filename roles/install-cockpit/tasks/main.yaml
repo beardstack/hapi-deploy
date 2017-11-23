@@ -11,3 +11,4 @@
   - cockpit-dashboard
   - cockpit-packagekit
   - cockpit-networkmanager
+  become: true

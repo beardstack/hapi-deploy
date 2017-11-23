@@ -56,6 +56,7 @@
   - install-cni-plugins
   - copy-certs-to-node
   - copy-kubeconfigs-to-node
+  - configure-rook-storage
 
   # kube components
   - install-kubectl
@@ -81,4 +82,4 @@
   - install-admin-kubeconfig
   - run-spec-romana
   - run-spec-dns
-  # - run-spec-rook
+  - run-spec-rook
