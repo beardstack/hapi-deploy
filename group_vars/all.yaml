@@ -47,7 +47,7 @@ kubernetes:
 icn_settings:
   http_proxy: "http://142.117.128.41:80"
   https_proxy: "http://142.117.128.41:80"
-  no_proxy: "localhost,127.0.0.1,.novalocal,192.168.0.56,192.168.0.57,192.168.0.58,192.168.0.59,192.168.0.60,192.168.0.61,192.168.0.62,192.168.0.63,192.168.0.64,192.168.0.65,wnoc-etc-1,wnoc-etc-2,wnoc-etc-3,wnoc-etc-1.novalocal,wnoc-etc-2.novalocal,wnoc-etc-3.novalocal,wnoc-kubemaster-1,wnoc-kubemaster-2,wnoc-kubemaster-3,wnoc-kubemaster-1.novalocal,wnoc-kubemaster-2.novalocal,wnoc-kubemaster-3.novalocal,wnoc-kube-1,wnoc-kube-1.novalocal,wnoc-kube-2,wnoc-kube-2.novalocal,wnoc-kube-3,wnoc-kube-3.novalocal,lb,lb.novalocal"
+  no_proxy: "localhost,127.0.0.1,.novalocal,192.168.0.56,192.168.0.57,192.168.0.58,192.168.0.59,192.168.0.60,192.168.0.61,192.168.0.62,192.168.0.63,192.168.0.64,192.168.0.65"
 
 server_settings:
   paths: "/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/usr/local/bin"

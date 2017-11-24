@@ -1,0 +1,1281 @@
+2017-11-23 10:12:33.534042 I | rook: starting Rook v0.6.0-38.gdf22444 with arguments '/usr/local/bin/rook operator'
+2017-11-23 10:12:33.534099 I | rook: flag values: --help=false, --log-level=INFO, --mon-healthcheck-interval=20s, --mon-out-timeout=5m0s
+2017-11-23 10:12:33.535274 I | rook: starting operator
+2017-11-23 10:12:36.207446 I | op-k8sutil: creating cluster role rook-agent
+2017-11-23 10:12:36.328580 I | op-agent: getting flexvolume dir path from provided env var
+2017-11-23 10:12:36.328614 I | op-agent: flexvolume dir path is not provided. Defaulting to: /usr/libexec/kubernetes/kubelet-plugins/volume/exec/
+2017-11-23 10:12:36.328622 I | op-agent: using flexvolume dir path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec/
+2017-11-23 10:12:36.341636 I | op-agent: rook-agent daemonset started
+2017-11-23 10:12:36.344811 I | operator: rook-provisioner started
+2017-11-23 10:12:36.345251 I | op-cluster: start watching clusters in all namespaces
+2017-11-23 10:24:08.296073 W | op-cluster: mon count is 0 or less (given: 0), needs to be greater 0
+2017-11-23 10:24:08.296433 I | op-cluster: starting cluster rook in namespace rook
+2017-11-23 10:24:14.313484 I | op-mon: start running mons
+2017-11-23 10:24:14.317326 I | exec: Running command: ceph-authtool --create-keyring /var/lib/rook/rook/mon.keyring --gen-key -n mon. --cap mon 'allow *'
+2017-11-23 10:24:14.361352 I | exec: Running command: ceph-authtool --create-keyring /var/lib/rook/rook/client.admin.keyring --gen-key -n client.admin --set-uid=0 --cap mon 'allow *' --cap osd 'allow *' --cap mgr 'allow *' --cap mds 'allow'
+2017-11-23 10:24:14.406629 I | op-mon: creating mon secrets for a new cluster
+2017-11-23 10:24:14.430600 I | op-mon: saved mon endpoints to config map map[data: maxMonId:-1 mapping:{"node":{},"port":{}}]
+2017-11-23 10:24:14.430990 I | cephmon: writing config file /var/lib/rook/rook/rook.config
+2017-11-23 10:24:14.431213 I | cephmon: generated admin config in /var/lib/rook/rook
+2017-11-23 10:24:14.437614 I | op-mon: there are 6 nodes available for 0 mons
+2017-11-23 10:24:14.441518 I | op-mon: Found 3 running nodes without mons
+2017-11-23 10:24:14.461276 I | op-mon: mon rook-ceph-mon0 running at 10.32.0.165:6790
+2017-11-23 10:24:14.480320 I | op-mon: saved mon endpoints to config map map[maxMonId:2 mapping:{"node":{"rook-ceph-mon0":{"Name":"wnoc-kube-1","Address":"192.168.0.63"},"rook-ceph-mon1":{"Name":"wnoc-kube-2","Address":"192.168.0.62"},"rook-ceph-mon2":{"Name":"wnoc-kube-3","Address":"192.168.0.64"}},"port":{}} data:rook-ceph-mon0=10.32.0.165:6790]
+2017-11-23 10:24:14.480643 I | cephmon: writing config file /var/lib/rook/rook/rook.config
+2017-11-23 10:24:14.480765 I | cephmon: generated admin config in /var/lib/rook/rook
+2017-11-23 10:24:14.481275 I | cephmon: writing config file /var/lib/rook/rook/rook.config
+2017-11-23 10:24:14.481390 I | cephmon: generated admin config in /var/lib/rook/rook
+2017-11-23 10:24:14.499840 I | op-mon: mons created: 1
+2017-11-23 10:24:14.499855 I | op-mon: waiting for mon quorum
+2017-11-23 10:24:14.499991 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/750853652
+2017-11-23 10:29:14.678257 I | exec: 2017-11-23 10:29:14.626300 7fbe26905700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:29:14.626300 7fbe26905700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:29:14.626340 7fbe26905700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 10:29:14.626340 7fbe26905700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 10:29:19.678831 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/054733923
+2017-11-23 10:34:19.873048 I | exec: 2017-11-23 10:34:19.827525 7f402c16b700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:34:19.827525 7f402c16b700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:34:19.827581 7f402c16b700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 10:34:19.827581 7f402c16b700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 10:34:24.873709 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/985303654
+2017-11-23 10:39:25.069859 I | exec: 2017-11-23 10:39:25.017160 7f2adf476700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:39:25.017160 7f2adf476700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:39:25.017211 7f2adf476700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 10:39:25.017211 7f2adf476700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 10:39:30.071261 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/460364429
+2017-11-23 10:44:30.271326 I | exec: 2017-11-23 10:44:30.216461 7f51d00b2700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:44:30.216461 7f51d00b2700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:44:30.216546 7f51d00b2700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 10:44:30.216546 7f51d00b2700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 10:44:35.273270 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/064502920
+2017-11-23 10:49:35.473106 I | exec: 2017-11-23 10:49:35.415871 7f19b84de700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:49:35.415871 7f19b84de700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:49:35.415928 7f19b84de700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 10:49:35.415928 7f19b84de700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 10:49:40.474345 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/144351815
+E1123 10:51:48.333433       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:51:48.343901       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:51:48.356532       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:51:51.395741       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:51:51.395784       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:51:51.395803       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:06.395960       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:06.395997       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:06.396012       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:21.396241       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:21.396282       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:21.396300       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:36.396544       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:36.396588       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:36.396605       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:51.396700       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:51.396736       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:52:51.396750       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:06.396978       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:06.397038       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:06.397065       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:21.397193       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:21.397234       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:21.397250       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:36.397456       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:36.397530       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:36.397548       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:51.397710       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:51.397757       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:53:51.397776       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:06.397972       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:06.398014       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:06.398033       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:21.398152       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:21.398194       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:21.398211       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:36.398324       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:36.398366       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:36.398382       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 10:54:40.670371 I | exec: 2017-11-23 10:54:40.620760 7f76b0e03700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:54:40.620760 7f76b0e03700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:54:40.620820 7f76b0e03700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 10:54:40.620820 7f76b0e03700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 10:54:45.670990 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/237360890
+E1123 10:54:51.398560       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:51.398597       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:54:51.398614       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:06.398778       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:06.398838       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:06.398856       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:21.399002       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:21.399466       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:21.399518       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:36.399180       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:36.399222       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:36.399240       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:51.399370       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:51.399411       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:55:51.399426       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:06.399566       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:06.399615       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:06.399632       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:21.399809       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:21.399861       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:21.399880       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:36.400075       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:36.400153       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:36.400173       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:51.400278       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:51.400321       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:56:51.400340       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:06.400477       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:06.400870       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:06.400890       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:21.400714       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:21.400755       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:21.400772       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:36.400978       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:36.401020       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:36.401037       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:51.401220       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:51.401261       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:57:51.401280       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:06.401451       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:06.401513       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:06.401532       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:21.401703       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:21.401746       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:21.401765       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:36.403060       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:36.403127       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:36.403160       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:51.403191       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:51.403238       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:58:51.403267       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:06.403370       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:06.403434       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:06.403452       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:21.403612       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:21.403657       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:21.403674       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:36.403818       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:36.403866       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:36.403883       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 10:59:45.863380 I | exec: 2017-11-23 10:59:45.817867 7feef7a23700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:59:45.817867 7feef7a23700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 10:59:45.817918 7feef7a23700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 10:59:45.817918 7feef7a23700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 10:59:50.863968 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/150807569
+E1123 10:59:51.404017       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:51.404082       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 10:59:51.404102       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:06.404273       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:06.404315       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:06.404334       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:21.404457       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:21.404518       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:21.404536       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:36.404680       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:36.404725       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:36.404742       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:51.406182       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:51.406277       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:00:51.406313       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:06.406429       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:06.406472       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:06.406528       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:21.406576       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:21.406616       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:21.406634       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:36.406729       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:36.406769       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:36.406787       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:51.406968       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:51.407012       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:01:51.407030       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:06.407180       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:06.407223       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:06.407241       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:21.407394       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:21.407444       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:21.407463       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:36.407615       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:36.407656       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:36.407672       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:51.407783       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:51.407829       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:02:51.407848       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:06.407997       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:06.408043       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:06.408061       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:21.408163       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:21.408209       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:21.408226       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:36.408395       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:36.408438       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:36.408456       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:51.408580       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:51.408634       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:03:51.408653       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:06.408784       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:06.408828       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:06.408846       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:21.408970       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:21.409012       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:21.409031       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:36.409145       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:36.409169       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:36.409179       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:04:51.071571 I | exec: 2017-11-23 11:04:51.019508 7fb3dab03700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:04:51.019508 7fb3dab03700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:04:51.019575 7fb3dab03700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:04:51.019575 7fb3dab03700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+E1123 11:04:51.409337       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:51.409374       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:04:51.409391       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:04:56.072270 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/532646460
+E1123 11:05:06.409655       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:06.409697       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:06.409714       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:21.409785       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:21.409835       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:21.409854       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:36.409880       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:36.409919       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:36.409935       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:51.410107       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:51.410156       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:05:51.410175       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:06.410321       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:06.410359       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:06.410375       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:21.410545       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:21.410584       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:21.410601       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:36.410773       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:36.410811       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:36.410826       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:51.410951       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:51.410992       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:06:51.411010       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:06.411112       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:06.411169       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:06.411186       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:21.411335       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:21.411377       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:21.411397       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:36.411569       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:36.411612       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:36.411672       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:51.411828       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:51.411876       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:07:51.411894       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:06.412037       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:06.412082       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:06.412100       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:21.412235       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:21.412271       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:21.412286       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:36.412458       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:36.412535       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:36.412555       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:51.412693       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:51.412733       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:08:51.412750       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:06.412880       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:06.412926       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:06.412945       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:21.413027       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:21.413087       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:21.413105       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:36.413232       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:36.413280       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:36.413298       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:51.413467       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:51.413534       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:09:51.413554       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:09:56.262127 I | exec: 2017-11-23 11:09:56.217323 7f397abd3700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:09:56.217323 7f397abd3700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:09:56.217383 7f397abd3700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:09:56.217383 7f397abd3700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 11:10:01.262728 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/393290347
+E1123 11:10:06.413608       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:06.413651       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:06.413667       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:21.413875       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:21.413919       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:21.413937       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:36.414109       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:36.414151       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:36.414169       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:51.414324       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:51.414363       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:10:51.414379       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:06.416268       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:06.416363       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:06.416397       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:21.416451       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:21.416528       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:21.416549       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:36.416686       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:36.416749       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:36.416768       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:51.417067       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:51.417118       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:11:51.417136       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:06.417267       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:06.417310       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:06.417328       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:21.417453       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:21.417526       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:21.417547       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:36.417728       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:36.417778       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:36.417796       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:51.417959       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:51.418010       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:12:51.418029       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:06.418191       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:06.418240       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:06.418258       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:21.419698       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:21.419761       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:21.419794       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:36.419845       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:36.419875       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:36.419899       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:51.420120       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:51.420163       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:13:51.420181       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:06.420379       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:06.420428       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:06.420447       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:21.420658       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:21.420696       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:21.420713       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:36.420819       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:36.420853       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:36.420866       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:51.421034       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:51.421077       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:14:51.421095       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:15:01.469445 I | exec: 2017-11-23 11:15:01.417388 7f4186a90700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:15:01.417388 7f4186a90700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:15:01.417444 7f4186a90700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:15:01.417444 7f4186a90700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+E1123 11:15:06.421281       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:15:06.421323       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:15:06.421340       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:15:06.470095 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/713488078
+E1123 11:15:21.421545       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:15:21.421601       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:15:21.421621       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:15:36.421747       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:15:36.421789       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:15:36.421806       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:15:51.421992       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:15:51.422034       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:15:51.422052       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:06.422175       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:06.422214       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:06.422230       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:21.422382       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:21.422419       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:21.422435       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:36.422629       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:36.422671       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:36.422689       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:51.422880       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:51.422937       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:16:51.422957       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:06.423072       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:06.423112       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:06.423129       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:21.423343       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:21.423385       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:21.423403       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:36.423576       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:36.423617       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:36.423634       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:51.423833       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:51.423874       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:17:51.423923       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:06.424112       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:06.424160       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:06.424179       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:21.424336       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:21.424373       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:21.424389       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:36.424607       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:36.424658       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:36.424677       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:51.424847       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:51.424887       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:18:51.424905       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:06.425081       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:06.425124       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:06.425142       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:21.425226       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:21.425254       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:21.425263       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:36.425435       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:36.425476       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:36.425512       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:51.425657       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:51.425697       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:19:51.425714       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:06.425821       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:06.425865       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:06.425881       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:20:06.672524 I | exec: 2017-11-23 11:20:06.618669 7f7ad295e700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:20:06.618669 7f7ad295e700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:20:06.618729 7f7ad295e700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:20:06.618729 7f7ad295e700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 11:20:11.673151 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/378585557
+E1123 11:20:21.426057       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:21.426095       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:21.426111       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:36.426243       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:36.426285       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:36.426304       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:51.426466       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:51.426531       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:20:51.426550       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:06.426705       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:06.426745       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:06.426763       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:21.426948       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:21.427002       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:21.427021       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:36.427142       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:36.427185       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:36.427202       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:51.427368       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:51.427413       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:21:51.427431       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:06.427626       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:06.427679       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:06.427697       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:21.427847       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:21.427885       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:21.427900       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:36.428145       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:36.428187       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:36.428205       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:51.428348       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:51.428398       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:22:51.428412       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:06.428548       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:06.428575       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:06.428585       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:21.428741       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:21.428782       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:21.428798       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:36.428998       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:36.429040       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:36.429057       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:51.429175       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:51.429214       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:23:51.429231       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:06.429343       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:06.429397       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:06.429414       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:21.429612       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:21.429667       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:21.429686       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:36.429786       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:36.429838       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:36.429856       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:51.429946       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:51.430010       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:24:51.430029       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:06.430220       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:06.430262       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:06.430279       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:25:11.870185 I | exec: 2017-11-23 11:25:11.818381 7ffa0cbc9700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:25:11.818381 7ffa0cbc9700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:25:11.818440 7ffa0cbc9700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:25:11.818440 7ffa0cbc9700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 11:25:16.870806 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/615567152
+E1123 11:25:21.430448       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:21.430521       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:21.430543       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:36.430710       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:36.430753       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:36.430771       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:51.430851       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:51.430891       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:25:51.430905       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:06.431090       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:06.431129       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:06.431146       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:21.431314       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:21.431361       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:21.431379       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:36.431524       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:36.431569       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:36.431588       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:51.431703       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:51.431754       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:26:51.431772       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:06.431870       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:06.431916       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:06.431934       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:21.432125       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:21.432164       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:21.432182       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:36.432370       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:36.432408       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:36.432423       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:51.432625       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:51.432668       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:27:51.432687       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:06.432822       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:06.432865       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:06.432883       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:21.432958       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:21.432988       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:21.432999       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:36.433217       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:36.433258       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:36.433276       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:51.433400       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:51.433440       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:28:51.433457       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:06.433571       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:06.433633       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:06.433657       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:21.433735       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:21.433775       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:21.433789       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:36.433993       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:36.434040       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:36.434057       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:51.436773       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:51.436834       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:29:51.436867       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:30:06.437054       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:30:06.437099       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:30:06.437118       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:30:17.054444 I | exec: 2017-11-23 11:30:16.999520 7f70bef6e700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:30:16.999520 7f70bef6e700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:30:16.999579 7f70bef6e700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:30:16.999579 7f70bef6e700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+E1123 11:30:21.437324       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:30:21.437376       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:30:21.437394       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:30:22.055100 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/263151311
+E1123 11:30:36.437564       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:30:36.437603       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:30:36.437619       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:30:51.437884       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:30:51.437945       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:30:51.437976       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:06.438051       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:06.438095       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:06.438111       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:21.438278       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:21.438324       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:21.438342       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:36.438543       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:36.438586       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:36.438604       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:51.439780       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:51.439867       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:31:51.439895       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:06.440022       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:06.440074       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:06.440092       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:21.440265       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:21.440319       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:21.440338       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:36.440536       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:36.440577       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:36.440594       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:51.440771       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:51.440820       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:32:51.440839       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:06.441737       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:06.441779       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:06.441796       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:21.441874       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:21.441915       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:21.441925       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:36.442115       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:36.442160       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:36.442177       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:51.442364       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:51.442405       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:33:51.442423       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:06.442663       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:06.442705       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:06.442722       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:21.442873       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:21.442905       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:21.442919       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:36.443083       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:36.443125       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:36.443143       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:51.443259       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:51.443297       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:34:51.443314       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:06.443438       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:06.443478       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:06.443530       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:21.443655       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:21.443708       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:21.443725       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:35:22.245119 I | exec: 2017-11-23 11:35:22.197279 7f53d5405700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:35:22.197279 7f53d5405700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:35:22.197334 7f53d5405700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:35:22.197334 7f53d5405700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 11:35:27.245682 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/710163938
+E1123 11:35:36.443914       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:36.443951       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:36.443965       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:51.444191       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:51.444242       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:35:51.444261       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:06.444429       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:06.444506       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:06.444526       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:21.444605       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:21.444635       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:21.444645       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:36.444878       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:36.444928       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:36.444945       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:51.445072       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:51.445114       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:36:51.445130       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:06.445318       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:06.445367       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:06.445386       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:21.445475       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:21.445534       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:21.445551       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:36.445688       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:36.445731       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:36.445744       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:51.445824       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:51.445876       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:37:51.445895       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:06.446073       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:06.446127       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:06.446146       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:21.446289       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:21.446343       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:21.446357       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:36.446581       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:36.446624       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:36.446645       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:51.446817       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:51.446862       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:38:51.446880       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:06.447045       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:06.447092       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:06.447110       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:21.447275       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:21.447315       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:21.447332       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:36.447442       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:36.447532       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:36.447553       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:51.447616       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:51.447653       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:39:51.447667       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:06.447824       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:06.447860       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:06.447874       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:21.448115       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:21.448160       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:21.448176       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:40:27.429900 I | exec: 2017-11-23 11:40:27.376889 7f0ffd18e700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:40:27.376889 7f0ffd18e700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:40:27.376954 7f0ffd18e700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:40:27.376954 7f0ffd18e700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 11:40:32.430454 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/268762073
+E1123 11:40:36.448250       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:36.448307       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:36.448323       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:51.448520       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:51.448566       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:40:51.448585       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:06.448739       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:06.448787       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:06.448804       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:21.448992       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:21.449046       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:21.449066       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:36.449248       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:36.449302       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:36.449321       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:51.449523       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:51.449579       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:41:51.449598       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:06.449733       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:06.449778       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:06.449794       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:21.449989       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:21.450042       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:21.450061       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:36.450245       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:36.450288       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:36.450306       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:51.450455       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:51.450542       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:42:51.450563       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:06.450650       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:06.450707       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:06.450726       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:21.450881       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:21.450963       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:21.450983       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:36.451125       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:36.451173       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:36.451190       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:51.451335       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:51.451385       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:43:51.451404       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:06.451529       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:06.451574       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:06.451590       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:21.451742       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:21.451790       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:21.451808       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:36.451929       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:36.451975       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:36.451991       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:51.452167       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:51.452219       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:44:51.452237       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:45:06.452420       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:45:06.452470       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:45:06.452514       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:45:21.452664       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:45:21.452714       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:45:21.452733       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:45:32.593754 I | exec: 2017-11-23 11:45:32.549241 7f6a25fcb700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:45:32.549241 7f6a25fcb700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:45:32.549296 7f6a25fcb700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:45:32.549296 7f6a25fcb700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+E1123 11:45:36.452914       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:45:36.452958       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:45:36.452976       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:45:37.594371 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/452948324
+E1123 11:45:51.453140       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:45:51.453183       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:45:51.453201       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:06.453333       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:06.453371       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:06.453386       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:21.455720       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:21.455777       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:21.455811       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:36.455966       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:36.456011       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:36.456030       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:51.456257       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:51.456304       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:46:51.456323       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:06.456462       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:06.456526       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:06.456543       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:21.456659       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:21.456708       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:21.456727       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:36.456868       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:36.456917       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:36.456935       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:51.457071       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:51.457113       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:47:51.457132       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:06.457299       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:06.457340       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:06.457357       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:21.457556       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:21.457599       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:21.457618       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:36.457781       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:36.457830       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:36.457847       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:51.458031       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:51.458087       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:48:51.458107       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:06.458268       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:06.458313       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:06.458334       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:21.458484       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:21.458562       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:21.458580       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:36.458737       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:36.458803       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:36.458840       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:51.459007       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:51.459060       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:49:51.459078       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:06.459200       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:06.459247       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:06.459264       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:21.459447       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:21.459523       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:21.459543       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:36.459680       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:36.459729       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:36.459746       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:50:37.745283 I | exec: 2017-11-23 11:50:37.704177 7fea0e05c700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:50:37.704177 7fea0e05c700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:50:37.704227 7fea0e05c700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:50:37.704227 7fea0e05c700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 11:50:42.745888 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/803303795
+E1123 11:50:51.459923       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:51.459962       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:50:51.459978       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:06.460161       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:06.460219       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:06.460237       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:21.460366       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:21.460408       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:21.460427       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:36.460602       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:36.460648       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:36.460666       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:51.460859       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:51.460909       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:51:51.460928       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:06.461111       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:06.461162       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:06.461181       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:21.461264       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:21.461320       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:21.461339       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:36.461583       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:36.461629       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:36.461646       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:51.461832       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:51.461886       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:52:51.461904       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:06.462063       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:06.462104       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:06.462121       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:21.462304       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:21.462345       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:21.462363       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:36.462521       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:36.462568       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:36.462586       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:51.462720       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:51.462772       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:53:51.462791       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:06.462870       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:06.462929       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:06.462951       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:21.463140       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:21.463185       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:21.463204       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:36.463359       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:36.463395       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:36.463410       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:51.463550       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:51.463591       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:54:51.463609       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:06.463772       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:06.463814       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:06.463831       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:21.464032       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:21.464074       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:21.464092       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:36.464143       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:36.464186       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:36.464202       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 11:55:42.956665 I | exec: 2017-11-23 11:55:42.900311 7f8ebc781700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:55:42.900311 7f8ebc781700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 11:55:42.900368 7f8ebc781700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 11:55:42.900368 7f8ebc781700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 11:55:47.957240 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/663285814
+E1123 11:55:51.464386       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:51.464430       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:55:51.464459       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:06.464632       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:06.464686       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:06.464709       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:21.464886       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:21.464925       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:21.464942       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:36.465073       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:36.465114       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:36.465128       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:51.465257       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:51.465300       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:56:51.465319       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:06.465468       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:06.465537       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:06.465554       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:21.465695       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:21.465735       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:21.465753       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:36.465944       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:36.465983       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:36.466000       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:51.466176       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:51.466216       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:57:51.466226       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:06.466398       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:06.466439       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:06.466457       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:21.466629       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:21.466663       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:21.466677       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:36.468031       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:36.468098       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:36.468132       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:51.468060       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:51.468121       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:58:51.468139       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:06.468244       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:06.468286       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:06.468301       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:21.468468       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:21.468540       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:21.468560       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:36.468653       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:36.468710       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:36.468729       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:51.468861       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:51.468914       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 11:59:51.468933       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:06.469076       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:06.469132       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:06.469154       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:21.469314       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:21.469365       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:21.469384       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:36.469521       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:36.469563       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:36.469578       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 12:00:48.164787 I | exec: 2017-11-23 12:00:48.115435 7fba79230700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:00:48.115435 7fba79230700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:00:48.115535 7fba79230700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:00:48.115535 7fba79230700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+E1123 12:00:51.469678       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:51.469717       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:00:51.469732       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 12:00:53.165452 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/338811933
+E1123 12:01:06.469873       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:06.469920       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:06.469937       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:21.470122       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:21.470172       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:21.470192       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:36.470273       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:36.470344       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:36.470364       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:51.470562       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:51.470608       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:01:51.470625       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:06.470771       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:06.470825       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:06.470844       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:21.471027       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:21.471071       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:21.471090       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:36.471267       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:36.471310       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:36.471327       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:51.471539       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:51.471583       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:02:51.471624       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:06.471756       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:06.471805       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:06.471822       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:21.471979       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:21.472025       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:21.472043       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:36.472187       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:36.472233       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:36.472250       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:51.472392       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:51.472438       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:03:51.472455       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:06.472646       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:06.472700       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:06.472718       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:21.472873       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:21.472921       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:21.472940       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:36.473027       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:36.473077       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:36.473097       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:51.475746       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:51.475807       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:04:51.475841       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:06.475946       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:06.475986       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:06.476002       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:21.476160       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:21.476200       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:21.476218       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:36.476338       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:36.476387       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:36.476405       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:51.476538       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:51.476582       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:05:51.476601       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 12:05:53.351158 I | exec: 2017-11-23 12:05:53.311371 7fae6c606700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:05:53.311371 7fae6c606700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:05:53.311428 7fae6c606700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:05:53.311428 7fae6c606700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:05:53.357300 I | op-cluster: creating initial crushmap
+2017-11-23 12:05:53.357334 I | cephclient: setting crush tunables to firefly
+2017-11-23 12:05:53.357565 I | exec: Running command: ceph osd crush tunables firefly --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format plain --out-file /tmp/049979096
+E1123 12:06:06.476735       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:06.476784       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:06.476803       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:21.476964       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:21.477013       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:21.477034       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:36.477113       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:36.477157       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:36.477172       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:51.477420       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:51.477548       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:06:51.477570       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:06.477652       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:06.477713       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:06.477732       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:21.477868       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:21.477908       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:21.477924       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:36.478090       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:36.478136       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:36.478155       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:51.478338       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:51.478385       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:07:51.478403       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:06.478585       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:06.478624       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:06.478641       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:21.478837       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:21.478887       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:21.478905       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:36.479089       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:36.479133       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:36.479152       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:51.479297       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:51.479341       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:08:51.479384       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:06.479549       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:06.479589       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:06.479604       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:21.479747       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:21.479800       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:21.479817       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:36.479977       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:36.480024       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:36.480044       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:51.480182       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:51.480231       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:09:51.480251       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:06.480473       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:06.480555       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:06.480575       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:21.480696       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:21.480740       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:21.480755       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:36.480942       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:36.480987       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:36.481003       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:51.481150       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:51.481207       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:10:51.481227       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 12:10:53.547728 I | exec: 2017-11-23 12:10:53.501515 7f3c0c2fd700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:10:53.501515 7f3c0c2fd700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:10:53.501571 7f3c0c2fd700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:10:53.501571 7f3c0c2fd700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:10:53.547874 E | op-cluster: failed to create cluster rook in namespace rook. failed to create initial crushmap: failed to create initial crushmap: failed to set crush tunables to profile firefly: exit status 1, 2017-11-23 12:10:53.501515 7f3c0c2fd700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:10:53.501515 7f3c0c2fd700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:10:53.501571 7f3c0c2fd700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:10:53.501571 7f3c0c2fd700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+. output: 
+2017-11-23 12:10:53.567198 I | op-mon: start running mons
+2017-11-23 12:10:53.572470 I | cephmon: parsing mon endpoints: rook-ceph-mon0=10.32.0.165:6790
+2017-11-23 12:10:53.572595 I | op-mon: loaded: maxMonID=2, mons=map[rook-ceph-mon0:0xc4201d9080], mapping=&{Node:map[rook-ceph-mon0:0xc4201d91a0 rook-ceph-mon1:0xc4201d9260 rook-ceph-mon2:0xc4201d9340] Port:map[]}
+2017-11-23 12:10:53.589106 I | op-mon: saved mon endpoints to config map map[maxMonId:2 mapping:{"node":{"rook-ceph-mon0":{"Name":"wnoc-kube-1","Address":"192.168.0.63"},"rook-ceph-mon1":{"Name":"wnoc-kube-2","Address":"192.168.0.62"},"rook-ceph-mon2":{"Name":"wnoc-kube-3","Address":"192.168.0.64"}},"port":{}} data:rook-ceph-mon0=10.32.0.165:6790]
+2017-11-23 12:10:53.589572 I | cephmon: writing config file /var/lib/rook/rook/rook.config
+2017-11-23 12:10:53.589795 I | cephmon: generated admin config in /var/lib/rook/rook
+2017-11-23 12:10:53.596064 I | op-mon: there are 6 nodes available for 1 mons
+2017-11-23 12:10:53.600251 I | op-mon: Found 2 running nodes without mons
+2017-11-23 12:10:53.634571 I | op-mon: mon rook-ceph-mon0 running at 10.32.0.165:6790
+2017-11-23 12:10:53.649086 I | op-mon: mon rook-ceph-mon3 running at 10.32.0.197:6790
+2017-11-23 12:10:53.950555 I | op-mon: saved mon endpoints to config map map[maxMonId:4 mapping:{"node":{"rook-ceph-mon0":{"Name":"wnoc-kube-1","Address":"192.168.0.63"},"rook-ceph-mon1":{"Name":"wnoc-kube-2","Address":"192.168.0.62"},"rook-ceph-mon2":{"Name":"wnoc-kube-3","Address":"192.168.0.64"},"rook-ceph-mon3":{"Name":"wnoc-kube-2","Address":"192.168.0.62"},"rook-ceph-mon4":{"Name":"wnoc-kube-3","Address":"192.168.0.64"}},"port":{}} data:rook-ceph-mon0=10.32.0.165:6790,rook-ceph-mon3=10.32.0.197:6790]
+2017-11-23 12:10:53.950935 I | cephmon: writing config file /var/lib/rook/rook/rook.config
+2017-11-23 12:10:53.951101 I | cephmon: generated admin config in /var/lib/rook/rook
+2017-11-23 12:10:53.951382 I | cephmon: writing config file /var/lib/rook/rook/rook.config
+2017-11-23 12:10:53.951550 I | cephmon: generated admin config in /var/lib/rook/rook
+2017-11-23 12:10:53.964035 I | op-mon: replicaset rook-ceph-mon0 already exists
+2017-11-23 12:10:53.973951 I | op-mon: mons created: 2
+2017-11-23 12:10:53.973973 I | op-mon: waiting for mon quorum
+2017-11-23 12:10:53.974211 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/621151319
+E1123 12:11:06.481394       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:06.481438       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:06.481456       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:21.481663       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:21.481703       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:21.481721       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:36.481892       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:36.481941       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:36.481959       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:51.482125       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:51.482166       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:11:51.482194       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:06.482386       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:06.482428       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:06.482447       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:21.482654       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:21.482694       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:21.482710       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:36.482930       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:36.482972       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:36.482989       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:51.483174       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:51.483212       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:12:51.483228       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:06.483461       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:06.483547       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:06.483565       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:21.483696       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:21.483755       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:21.483774       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:36.483917       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:36.483975       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:36.483996       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:51.484175       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:51.484226       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:13:51.484245       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:06.484434       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:06.484513       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:06.484536       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:21.484675       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:21.484726       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:21.484743       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:36.484882       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:36.484934       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:36.484952       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:51.485087       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:51.485121       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:14:51.485135       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:15:06.485322       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:15:06.485367       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:15:06.485384       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+E1123 12:15:21.485563       5 controller.go:584] Error getting claim "default/my-release-mariadb"'s StorageClass's fields: StorageClass "" not found
+E1123 12:15:21.485608       5 controller.go:584] Error getting claim "default/my-release-mediawiki-apache"'s StorageClass's fields: StorageClass "" not found
+E1123 12:15:21.485625       5 controller.go:584] Error getting claim "default/my-release-mediawiki-mediawiki"'s StorageClass's fields: StorageClass "" not found
+2017-11-23 12:15:54.155375 I | exec: 2017-11-23 12:15:54.109205 7f62a3dbb700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:15:54.109205 7f62a3dbb700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:15:54.109264 7f62a3dbb700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:15:54.109264 7f62a3dbb700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:15:59.156115 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/399965130
+2017-11-23 12:20:59.348787 I | exec: 2017-11-23 12:20:59.301316 7f7ceb4d0700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:20:59.301316 7f7ceb4d0700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:20:59.301376 7f7ceb4d0700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:20:59.301376 7f7ceb4d0700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:21:04.349413 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/184800929
+2017-11-23 12:26:04.551647 I | exec: 2017-11-23 12:26:04.499363 7ffbdf4c6700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:26:04.499363 7ffbdf4c6700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:26:04.499419 7ffbdf4c6700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:26:04.499419 7ffbdf4c6700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:26:09.552321 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/265543564
+2017-11-23 12:31:09.745029 I | exec: 2017-11-23 12:31:09.700305 7efcb45ee700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:31:09.700305 7efcb45ee700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:31:09.700364 7efcb45ee700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:31:09.700364 7efcb45ee700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:31:14.745687 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/283440507
+2017-11-23 12:36:14.951354 I | exec: 2017-11-23 12:36:14.895698 7f1bae77b700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:36:14.895698 7f1bae77b700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:36:14.895751 7f1bae77b700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:36:14.895751 7f1bae77b700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:36:19.952015 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/004355230
+2017-11-23 12:41:20.149725 I | exec: 2017-11-23 12:41:20.095876 7f3ee2663700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:41:20.095876 7f3ee2663700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:41:20.095932 7f3ee2663700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:41:20.095932 7f3ee2663700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:41:25.150367 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/498324325
+2017-11-23 12:46:25.340385 I | exec: 2017-11-23 12:46:25.292436 7fdcdcead700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:46:25.292436 7fdcdcead700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:46:25.292523 7fdcdcead700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:46:25.292523 7fdcdcead700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:46:30.341026 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/162000256
+2017-11-23 12:51:30.546162 I | exec: 2017-11-23 12:51:30.485085 7fb404d26700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:51:30.485085 7fb404d26700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:51:30.485151 7fb404d26700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:51:30.485151 7fb404d26700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:51:35.546779 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/558277855
+2017-11-23 12:56:35.738995 I | exec: 2017-11-23 12:56:35.695559 7f1362429700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:56:35.695559 7f1362429700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 12:56:35.695641 7f1362429700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 12:56:35.695641 7f1362429700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 12:56:40.739703 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/954935474
+2017-11-23 13:01:40.906818 I | exec: 2017-11-23 13:01:40.859471 7fe092fb1700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:01:40.859471 7fe092fb1700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:01:40.859545 7fe092fb1700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 13:01:40.859545 7fe092fb1700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 13:01:45.907395 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/961622633
+2017-11-23 13:06:46.107778 I | exec: 2017-11-23 13:06:46.052933 7fd365c95700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:06:46.052933 7fd365c95700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:06:46.052990 7fd365c95700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 13:06:46.052990 7fd365c95700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 13:06:51.108399 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/810192564
+2017-11-23 13:11:51.293585 I | exec: 2017-11-23 13:11:51.251074 7f4b441bb700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:11:51.251074 7f4b441bb700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:11:51.251140 7f4b441bb700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 13:11:51.251140 7f4b441bb700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 13:11:56.294161 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/254791299
+2017-11-23 13:16:56.497852 I | exec: 2017-11-23 13:16:56.442742 7efe7b076700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:16:56.442742 7efe7b076700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:16:56.442792 7efe7b076700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 13:16:56.442792 7efe7b076700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 13:17:01.498465 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/163763206
+2017-11-23 13:22:01.699170 I | exec: 2017-11-23 13:22:01.648264 7fa047f57700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:22:01.648264 7fa047f57700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:22:01.648321 7fa047f57700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 13:22:01.648321 7fa047f57700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 13:22:06.699915 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/943997357
+2017-11-23 13:27:06.904119 I | exec: 2017-11-23 13:27:06.852787 7fcdf0fcb700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:27:06.852787 7fcdf0fcb700  0 monclient(hunting): authenticate timed out after 300
+2017-11-23 13:27:06.852843 7fcdf0fcb700  0 librados: client.admin authentication error (110) Connection timed out
+2017-11-23 13:27:06.852843 7fcdf0fcb700  0 librados: client.admin authentication error (110) Connection timed out
+[errno 110] error connecting to the cluster
+2017-11-23 13:27:11.905313 I | exec: Running command: ceph mon_status --cluster=rook --conf=/var/lib/rook/rook/rook.config --keyring=/var/lib/rook/rook/client.admin.keyring --format json --out-file /tmp/227792168
+2017-11-23 13:27:22.994384 I | operator: shutdown signal received, exiting...
