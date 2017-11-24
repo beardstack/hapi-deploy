@@ -19,9 +19,9 @@ kubernetes:
   version: "1.8.2"
   accessIP: "192.168.0.65"
   cluster:
+    domain: "cluster.local"
     shortName: "hapi"
-    name: "hapi.novalocal"
-    domain: "hapi.localdomain"
+    name: "kubernetes.hapi"    
     podCIDR: "10.200.0.0/16"
     serviceCIDR: "10.32.0.0/24"
     dns: "10.32.0.10"

@@ -14,7 +14,7 @@ spec:
   storage:
     useAllNodes: false
     useAllDevices: false
-    deviceFilter:
+    deviceFilter: "^sd[b-z]"
     metadataDevice:
     location:
     storeConfig:
@@ -22,5 +22,4 @@ spec:
     nodes:
 {% for item in groups['kubernetes-nodes'] %}
     - name: "wnoc-kube-{{ loop.index }}"
-	  deviceFilter: ^sd[b-z]
 {% endfor %}
