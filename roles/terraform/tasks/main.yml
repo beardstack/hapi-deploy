@@ -4,12 +4,13 @@
   timezone: 
     name: America/Toronto
      
-- name: Update hosts file and environment variables
+- name: Update DNS settings
+  become: yes
   copy:
     src: "{{item}}"
-    dest: /etc/
+    dest: /etc/dhcp
   with_items:
-    - hosts
+    - dhclient.conf
 
 - name: Configure curl settings   
   template:
@@ -72,6 +73,7 @@
   - redhat-lsb
   - libseccomp
   - libtool-ltdl
+  - NetworkManager
 
 - name: check to see if the ~/.zshrc exists
   become: yes
@@ -125,6 +127,14 @@
   - 'alias node_status="kubectl get nodes"'
   - 'alias pods_status="kubectl get pods -n kube-system"'
   - 'export PATH={{server_settings.paths}}'
+  
+- name: Start NetworkManager (DNS lookup)
+  become: yes
+  command: systemctl start NetworkManager
+  
+- name: enable NetworkManager
+  become: yes
+  command: systemctl enable NetworkManager
 
 - name: Configure NTP settings   
   template:
@@ -132,17 +142,17 @@
     dest: /etc/ntp.conf
 
 - name: Stop NTP server
-  sudo: yes
+  become: yes
   command: systemctl stop ntpd
 
 - name: Initial sync /w ntpdate 
-  sudo: yes
+  become: yes
   command: ntpdate {{ ntp_servers.server0 }}
   
 - name: Enable NTP server
-  sudo: yes
+  become: yes
   command: systemctl enable ntpd
 
 - name: Start NTP server
-  sudo: yes
+  become: yes
   command: systemctl start ntpd
