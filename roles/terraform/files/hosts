@@ -1,16 +1,16 @@
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
-192.168.0.56	wnoc-etc-1 wnoc-etc-1.novalocal
-192.168.0.57	wnoc-etc-2 wnoc-etc-2.novalocal
-192.168.0.58	wnoc-etc-3 wnoc-etc-3.novalocal
+# 192.168.0.56	wnoc-etc-1 wnoc-etc-1.novalocal
+# 192.168.0.57	wnoc-etc-2 wnoc-etc-2.novalocal
+# 192.168.0.58	wnoc-etc-3 wnoc-etc-3.novalocal
 
-192.168.0.59	wnoc-kubemaster-1 wnoc-kubemaster-1.novalocal
-192.168.0.60	wnoc-kubemaster-2 wnoc-kubemaster-2.novalocal
-192.168.0.61	wnoc-kubemaster-3 wnoc-kubemaster-3.novalocal
+# 192.168.0.59	wnoc-kubemaster-1 wnoc-kubemaster-1.novalocal
+# 192.168.0.60	wnoc-kubemaster-2 wnoc-kubemaster-2.novalocal
+# 192.168.0.61	wnoc-kubemaster-3 wnoc-kubemaster-3.novalocal
 
-192.168.0.63	wnoc-kube-1 wnoc-kube-1.novalocal
-192.168.0.62	wnoc-kube-2 wnoc-kube-2.novalocal
-192.168.0.64	wnoc-kube-3 wnoc-kube-3.novalocal
+# 192.168.0.63	wnoc-kube-1 wnoc-kube-1.novalocal
+# 192.168.0.62	wnoc-kube-2 wnoc-kube-2.novalocal
+# 192.168.0.64	wnoc-kube-3 wnoc-kube-3.novalocal
 
-192.168.0.65	lb lb.novalocal
+# 192.168.0.65	lb lb.novalocal
