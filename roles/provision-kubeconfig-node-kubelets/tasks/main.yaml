@@ -5,13 +5,13 @@
   with_indexed_items: "{{ groups['kubernetes-nodes'] }}"
 
 - name: set the credentials for each kubelet node
-  shell: "kubectl config set-credentials system:node:wnoc-kube-{{ item.0 + 1 }} --client-certificate=../../certs/outputs/kubelet.node.{{ item.1 }}.pem --client-key=../../certs/outputs/kubelet.node.{{ item.1 }}-key.pem --embed-certs=true --kubeconfig=./kubelet.node.{{ item.1 }}.kubeconfig"
+  shell: "kubectl config set-credentials system:node:node-{{ item.0 + 1 }} --client-certificate=../../certs/outputs/kubelet.node.{{ item.1 }}.pem --client-key=../../certs/outputs/kubelet.node.{{ item.1 }}-key.pem --embed-certs=true --kubeconfig=./kubelet.node.{{ item.1 }}.kubeconfig"
   args:
     chdir: "{{ config.directory }}/k8s/kubeconfigs"
   with_indexed_items: "{{ groups['kubernetes-nodes'] }}"
 
 - name: set the context for each kubelet node
-  shell: "kubectl config set-context default --cluster={{ kubernetes.cluster.name }} --user=system:node:wnoc-kube-{{ item.0 + 1 }} --kubeconfig=./kubelet.node.{{ item.1 }}.kubeconfig"
+  shell: "kubectl config set-context default --cluster={{ kubernetes.cluster.name }} --user=system:node:node-{{ item.0 + 1 }} --kubeconfig=./kubelet.node.{{ item.1 }}.kubeconfig"
   args:
     chdir: "{{ config.directory }}/k8s/kubeconfigs"
   with_indexed_items: "{{ groups['kubernetes-nodes'] }}"
