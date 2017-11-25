@@ -6,7 +6,7 @@
   - update-trust-stores
   become: yes
   become_method: sudo
-
+ 
 - hosts: localhost
   roles:
   - update-trust-stores
@@ -83,3 +83,7 @@
   - run-spec-romana
   - run-spec-dns
   - run-spec-rook
+  
+- hosts: entrypoint 
+  roles: 
+  - install-kubeadmin-kubeconfig

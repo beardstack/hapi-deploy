@@ -1,0 +1,18 @@
+- name: make sure the ~/.kube directory exists
+  become: yes
+  become_user: root
+  file:
+    path: /home/kubeadmin/.kube
+    state: directory
+    owner: kubeadmin
+    mode: 0755
+
+- name: install the kubeconfig
+  become: yes
+  become_user: root
+  copy:
+    src: "{{ config.directory }}/k8s/kubeconfigs/admin.kubeconfig"
+    dest: /home/kubeadmin/.kube/config
+    owner: kubeadmin
+    group: kubeadmin
+    mode: 0600

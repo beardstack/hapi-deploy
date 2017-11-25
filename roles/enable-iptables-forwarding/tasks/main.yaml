@@ -1,26 +1,9 @@
-- name: install a cron that will periodically ensure that forwarding is turned on in the iptables
-  become: yes
-  cron:
-    name: "enable iptables forwarding"
-    minute: "*/1"
-    job: "/sbin/iptables -P FORWARD ACCEPT"
-    
- # Allow related and established connections
-#- iptables:
-#    chain: FORWARD
-#    jump: ACCEPT
-#  become: yes   
-
-# - name: ensure that NTP is allowed OUT
-  # become: yes
-  # cron:
-    # name: "enable NTP OUTPUT"
-    # minute: "*/1"
-    # job: "/sbin/iptables -A OUTPUT -p udp --dport 123 -j ACCEPT"
-    
-# - name: ensure that NTP is allowed IN
-  # become: yes
-  # cron:
-    # name: "enable NTP INPUT"
-    # minute: "*/1"
-    # job: "/sbin/iptables -A INPUT -p udp --sport 123 -j ACCEPT"    
+- name: Allow related and established connections
+  iptables:
+   chain: FORWARD
+   jump: ACCEPT
+  become: yes   
+ 
+- name: Save iptables
+  command: service iptables save
+  become: yes   

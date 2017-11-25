@@ -44,6 +44,7 @@
     dest: "/etc/systemd/system/docker.service.d/https-proxy.conf"
 
 - name: Install Docker
+  become_user: root
   become: yes
   yum:
     name: "{{ item }}"
@@ -53,7 +54,11 @@
   - docker-ce
   
 - name: Start docker
+  become_user: root
   become: yes
   service:
     name: docker
     state: started
+    enabled: yes
+  
+

@@ -1,7 +1,21 @@
+- pause:
+    minutes: 1
+    
 - name: install
   shell: "kubectl apply -f {{ config.directory }}/k8s/specs/{{ item }}.yaml"
   with_items:
   - rook.operator
+  
+- pause:
+    minutes: 1
+  
+- name: install
+  shell: "kubectl apply -f {{ config.directory }}/k8s/specs/{{ item }}.yaml"
+  with_items:
   - rook.cluster
+  
+- pause:
+    minutes: 1
+    
   - rook.storageclass
   - rook.toolbox
