@@ -29,7 +29,7 @@ kubernetes:
   cni:
     version: "0.6.0"
   romana:
-    version: "2.0-preview.3"
+    version: "2.0.0"
     podCIDR: "10.200.0.0/22"
     blockMask: 29
     serviceIP: "10.32.0.99"
