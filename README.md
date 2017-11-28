@@ -6,6 +6,11 @@
 
 Centos version of the ansible deployment of [Carl Danley's Radium deployment](https://github.com/carldanley/radium-cluster) which is itself based on Kelsey Hightower's [kubernetes the "hard" way](https://github.com/kelseyhightower/kubernetes-the-hard-way).
 
+## Design
+
+![Alt text](/img/hapi.png?raw=true "hapi layout")
+
+
 ## Goals
 
 Running an on-prem Kubernetes cluster on OpenStack. The main goals of these ansible plays are:
