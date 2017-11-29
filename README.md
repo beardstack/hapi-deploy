@@ -15,9 +15,11 @@ Centos version of the ansible deployment of [Carl Danley's Radium deployment](ht
 
 Running an on-prem Kubernetes cluster on OpenStack. The main goals of these ansible plays are:
 
-1. To introduce (and manage) a highly available on-prem cluster
-1. Demonstrate best practices for running a kubernetes cluster
+1. To deploy and manage a highly available on-prem cluster
+1. Demonstrate best practices for running a kubernetes cluster on openstack
 1. Keep things clear and simple for others to grok
+1. To create an environment that allows fast and scalable deployments of microservices based on the team's needs
+
 
 ## Cluster Specifications
 
@@ -32,3 +34,12 @@ This cluster bootstraps 3 etcd nodes, 3 kubernetes masters and 3 kubernetes node
 | [kube-dns](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns) | 1.14.4 | DNS Pods and Service on the cluster, other pods in cluster can use the DNS Service’s IP to resolve DNS|
 | [rook](https://rook.io/) | 0.5.1 | Rook runs as a cloud-native service for optimal integration with applications in need of storage, and handles the heavy-lifting behind the scenes such as provisioning and management.|
 
+### Caveats
+
+Openstack by default blocks address spoofing; 
+
+Each port (for every node) needs to either:
+
+Have port_security_enabled set to false 
+OR
+Be configured with ####port-update <port_id_here> --allowed_address_pairs list=true type=dict ip_address=<romana_cidr_here>####
