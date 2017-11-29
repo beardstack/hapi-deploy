@@ -30,7 +30,7 @@ This cluster bootstraps 3 etcd nodes, 3 kubernetes masters and 3 kubernetes node
 | Name | Version |Purpose|
 |:-----|:-------|:-------|
 | [Cockpit](http://cockpit-project.org/) |  Version 151. | Node and cluster control |
-| [romana](http://romana.io/) | 2.0-preview.3 | Automates the creation of isolated cloud native networks and secures them using microsegmentation |
+| [romana](http://romana.io/) | v2.0 | Automates the creation of isolated cloud native networks and secures them using microsegmentation |
 | [kube-dns](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns) | 1.14.4 | DNS Pods and Service on the cluster, other pods in cluster can use the DNS Service’s IP to resolve DNS|
 | [rook](https://rook.io/) | 0.5.1 | Rook runs as a cloud-native service for optimal integration with applications in need of storage, and handles the heavy-lifting behind the scenes such as provisioning and management.|
 
