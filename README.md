@@ -38,8 +38,12 @@ This cluster bootstraps 3 etcd nodes, 3 kubernetes masters and 3 kubernetes node
 
 Openstack by default blocks address spoofing; 
 
-Each port (for every node) needs to either:
+1. Each port (for every node) needs to either:
 
 > Have port_security_enabled set to false 
 #### OR
 > port-update <port_id_here> --allowed_address_pairs list=true type=dict ip_address=<romana_cidr_here>
+
+1. Nodes must be renamed // Quirk with opentstack adding .clusterlocal
+
+1. Need to add iptables rules
