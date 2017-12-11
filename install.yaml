@@ -80,9 +80,10 @@
   roles:
   - install-kubectl
   - install-admin-kubeconfig
-  - run-spec-romana
+  - run-spec-flannel
+#  - run-spec-romana
   - run-spec-dns
-  - run-spec-rook
+#  - run-spec-rook
   
 - hosts: entrypoint 
   roles: 
