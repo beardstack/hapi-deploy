@@ -16,6 +16,7 @@ ExecStart=/usr/local/bin/kube-controller-manager \
   --root-ca-file=/var/lib/kubernetes/ca.pem \
   --service-account-private-key-file=/var/lib/kubernetes/ca-key.pem \
   --service-cluster-ip-range={{ kubernetes.cluster.serviceCIDR }} \
+  --allocate-node-cidrs=true \
   --v=2
 Restart=on-failure
 RestartSec=5
