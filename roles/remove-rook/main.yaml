@@ -1,0 +1,20 @@
+- name: remove toolbox
+  shell: "kubectl delete -f {{ config.directory }}/k8s/specs/{{ item }}.yaml"
+  with_items:
+  - rook.toolbox
+  
+- name: remove storageclass
+  shell: "kubectl delete -f {{ config.directory }}/k8s/specs/{{ item }}.yaml"
+  with_items:
+  - rook.storageclass
+  
+- name: remove cluster
+  shell: "kubectl delete -f {{ config.directory }}/k8s/specs/{{ item }}.yaml"
+  with_items:
+  - rook.cluster
+  
+- name: remove operator
+  shell: "kubectl delete -f {{ config.directory }}/k8s/specs/{{ item }}.yaml"
+  with_items:
+  - rook.operator
+  
