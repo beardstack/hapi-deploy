@@ -45,6 +45,8 @@
   service: name={{ item }} state=stopped enabled=no
   with_items:
   - chronyd
+  
+  
    
 - name: upgrade all packages
   yum:
@@ -78,6 +80,7 @@
   - iptables-services
   - gdisk
   - ipset
+  - conntrack
 
 - name: check to see if the ~/.zshrc exists
   become: yes
@@ -131,6 +134,14 @@
   - 'alias node_status="kubectl get nodes"'
   - 'alias pods_status="kubectl get pods -n kube-system"'
   - 'export PATH={{server_settings.paths}}'
+  
+- name: Stop chronyd
+  become: yes
+  command: systemctl stop chronyd
+
+- name: disable chronyd
+  become: yes
+  command: systemctl disable chronyd
   
 - name: Start NetworkManager (DNS lookup)
   become: yes
