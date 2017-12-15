@@ -47,3 +47,15 @@ Openstack by default blocks address spoofing;
 1. Nodes must be renamed // Quirk with opentstack adding .clusterlocal
 
 1. Need to add iptables rules
+
+
+### Issues
+
+* Romana is currently non functional. Flannel is a temporary solution put in place. The Romana team is assisting with further troubleshooting.
+* There are some strange issues occuring in the cluster. It seems to be pointing towards the core installation.
+
+### TO DO:
+
+1. Create script to provision adding nodes to the cluster.
+1. Use ingress instead of the Nginx reverse proxy
+
