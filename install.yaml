@@ -81,6 +81,7 @@
   - install-kubectl
   - install-admin-kubeconfig
   - run-spec-flannel
+  - run-spec-heapster
 #  - run-spec-romana
   - run-spec-dns
 #  - run-spec-rook

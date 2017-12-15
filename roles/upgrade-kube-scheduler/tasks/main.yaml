@@ -1,0 +1,12 @@
+- name: download kube-scheduler from provisioner and make sure it's executable
+  become: yes
+  copy:
+   src: "{{ config.directory }}/bin/kube-scheduler"
+   dest: /usr/local/bin/
+   mode: 0700
+
+- name: restart the service
+  become: yes
+  service:
+    name: kube-scheduler
+    state: restarted

@@ -1,0 +1,6 @@
+- name: download kubectl from provisioner and make sure it's executable
+  become: yes
+  copy:
+   src: "{{ config.directory }}/bin/kubectl"
+   dest: /usr/local/bin/
+   mode: 0700

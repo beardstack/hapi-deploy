@@ -1,0 +1,19 @@
+- hosts: localhost
+  roles:
+  # preparation
+  - download-binaries
+
+- hosts: kubernetes-masters
+  roles:
+  - upgrade-kube-apiserver
+  - upgrade-kube-controller-manager
+  - upgrade-kube-scheduler
+  - upgrade-kubectl
+  - upgrade-kubelet
+  - upgrade-kube-proxy
+
+- hosts: kubernetes-nodes
+  roles:
+  - upgrade-kubectl
+  - upgrade-kubelet
+  - upgrade-kube-proxy
